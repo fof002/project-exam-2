@@ -1,5 +1,5 @@
 import { ProfileDropdown } from "./ProfileDropdown";
-import { SearchBar } from "./SearchBar";
+import { Form, Row, Col, Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -21,11 +21,25 @@ export function NavVenue() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
             <ProfileDropdown />
+            <Nav.Link href="#link">About</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <Form inline>
+        <Row>
+          <Col xs="auto">
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              className=" mr-sm-2"
+            />
+          </Col>
+          <Col xs="auto">
+            <Button type="submit">Submit</Button>
+          </Col>
+        </Row>
+      </Form>
     </Navbar>
   );
 }
