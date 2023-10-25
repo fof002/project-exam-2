@@ -2,4 +2,12 @@
   color: var(--success) !important;
 }
 
-@import "bootstrap/dist/css/bootstrap.css";
+$theme-colors: (
+  "primary": #144602,
+);
+
+#basic-nav-dropdown {
+  color: #fff;
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";
