@@ -10,6 +10,21 @@ $theme-colors: (
   "primary": #144602,
 );
 
+#searchInput:focus {
+  outline: none;
+  box-shadow: none;
+}
+#searchInput {
+  background: transparent !important;
+  color: black;
+  position: relative;
+  z-index: 1;
+}
+
+#searchContainer:focus-within {
+  background: rgb(235, 234, 234) !important;
+}
+
 #basic-nav-dropdown,
 .navbar-toggler,
 .navbar-toggler.collapsed {
