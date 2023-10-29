@@ -1,15 +1,22 @@
+import { Form, Row, Col, Button } from "react-bootstrap";
+
 export function SearchBar() {
   return (
-    <form class="d-flex" role="search">
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Search our venues..."
-        aria-label="Search"
-      />
-      <button class="btn search-btn btn-outline-light text-white" type="submit">
-        Search
-      </button>
-    </form>
+    <Form inline>
+      <Row className="d-flex">
+        <Col xs="auto">
+          <Form.Control
+            type="text"
+            placeholder="Search our venues..."
+            className=" mr-sm-2 bg-white text-primary"
+          />
+        </Col>
+        <Col xs="auto">
+          <Button className="border-white" type="submit">
+            Search
+          </Button>
+        </Col>
+      </Row>
+    </Form>
   );
 }

@@ -2,12 +2,21 @@
   color: var(--success) !important;
 }
 
+input::placeholder {
+  color: black !important;
+}
+
 $theme-colors: (
   "primary": #144602,
 );
 
-#basic-nav-dropdown {
-  color: #fff;
+#basic-nav-dropdown,
+.navbar-toggler,
+.navbar-toggler.collapsed {
+  color: #fff !important;
+}
+.navbar-toggler.collapsed {
+  border: 1px solid #fff !important;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";

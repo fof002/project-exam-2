@@ -1,16 +1,16 @@
 import { ProfileDropdown } from "./ProfileDropdown";
-import { Form, Row, Col, Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { SearchBar } from "./SearchBar";
 
 export function NavVenue() {
   return (
-    <Navbar expand="lg" className="bg-primary">
+    <Navbar expand="lg" className="bg-primary" bg="light" data-bs-theme="dark">
       <Container>
         <Navbar.Brand href="#home">
           <img
-            src="img/Logo.png"
+            src="Logo.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
@@ -28,22 +28,7 @@ export function NavVenue() {
               About
             </Nav.Link>
           </Nav>
-          <Form inline>
-            <Row className="d-flex">
-              <Col xs="auto">
-                <Form.Control
-                  type="text"
-                  placeholder="Search our venues..."
-                  className=" mr-sm-2"
-                />
-              </Col>
-              <Col xs="auto">
-                <Button className="border-white" type="submit">
-                  Search
-                </Button>
-              </Col>
-            </Row>
-          </Form>
+          <SearchBar />
         </Navbar.Collapse>
       </Container>
     </Navbar>
