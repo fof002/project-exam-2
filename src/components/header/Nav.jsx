@@ -3,18 +3,19 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { SearchBar } from "./SearchBar";
+import logo from "./logo.png";
 
 export function NavVenue() {
   return (
-    <Navbar expand="lg" className="bg-primary" bg="light" data-bs-theme="dark">
+    <Navbar expand="lg" className="bg-primary" bg="dark" data-bs-theme="light">
       <Container>
         <Navbar.Brand href="#home">
           <img
-            src="Logo.png"
-            width="30"
-            height="30"
+            src={logo}
+            width="100"
+            height="40"
             className="d-inline-block align-top"
-            alt=""
+            alt="Logo"
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
