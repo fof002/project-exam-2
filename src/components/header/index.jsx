@@ -1,9 +1,9 @@
-import { NavVenue } from "./Nav";
+import { NavComponent } from "./Nav";
 
 export function Header() {
   return (
     <div>
-      <NavVenue />
+      <NavComponent />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { SearchBar } from "./SearchBar";
 import logo from "./logo.png";
 import { Link } from "react-router-dom";
 
-export function NavVenue() {
+export function NavComponent() {
   return (
     <Navbar expand="lg" className="bg-primary" bg="dark" data-bs-theme="light">
       <Container>
@@ -23,7 +23,7 @@ export function NavVenue() {
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto d-flex flex-direction-column align-items-center">
+          <Nav className="me-auto">
             <ProfileDropdown />
             <Link className="text-decoration-none" to="/about">
               <Navbar.Text className="text-white">About</Navbar.Text>
