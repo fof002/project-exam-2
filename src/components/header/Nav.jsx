@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 export function NavComponent() {
   return (
     <Navbar expand="lg" className="bg-primary" bg="dark" data-bs-theme="light">
-      <Container>
-        <Link to="/about">
+      <Container style={{ maxWidth: "100%" }}>
+        <Link to="/">
           <Navbar.Brand>
             <img
               src={logo}
