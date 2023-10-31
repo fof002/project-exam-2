@@ -1,11 +1,7 @@
-import { Header } from "./components/header";
+import { RouteComponent } from "./components/route/Index";
 
 function App() {
-  return (
-    <div>
-      <Header />
-    </div>
-  );
+  return <RouteComponent />;
 }
 
 export default App;

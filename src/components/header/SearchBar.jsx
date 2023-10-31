@@ -2,7 +2,7 @@ import { Form, Row, Col, Container } from "react-bootstrap";
 
 export function SearchBar() {
   return (
-    <Form inline>
+    <Form>
       <Container className="bg-white p-1 rounded" id="searchContainer">
         <Row className="d-flex">
           <Col xs="auto"></Col>
