@@ -25,7 +25,7 @@ export function NavComponent() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <ProfileDropdown />
-            <Link className="text-decoration-none" to="/about">
+            <Link className="text-decoration-none d-flex" to="/about">
               <Navbar.Text className="text-white">About</Navbar.Text>
             </Link>
           </Nav>

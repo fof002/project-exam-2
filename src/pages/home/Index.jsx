@@ -1,3 +1,3 @@
 export function HomePage() {
-  return "hallo";
+  return "hallo homepage";
 }

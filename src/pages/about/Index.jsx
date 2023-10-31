@@ -1,3 +1,3 @@
-export const About = () => {
-  "hallo about";
-};
+export function About() {
+  return "hallo about";
+}

@@ -1,6 +1,6 @@
 import { NavComponent } from "./Nav";
 
-export function Header() {
+export function HeaderComponent() {
   return (
     <div>
       <NavComponent />

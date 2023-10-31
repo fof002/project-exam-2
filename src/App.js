@@ -1,9 +1,9 @@
-import { Header } from "./components/header";
+import { RouteComponent } from "./components/route/Index";
 
 function App() {
   return (
     <div>
-      <Header />
+      <RouteComponent />
     </div>
   );
 }
