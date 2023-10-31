@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import { HomePage } from "../../pages/home/Index";
 import { About } from "../../pages/about/Index";
 import { Layout } from "../layout/Index";
+import { Venues } from "../../pages/venues/Index";
+import { Bookings } from "../../pages/bookings/Index";
 
 export function RouteComponent() {
   return (
@@ -9,6 +11,8 @@ export function RouteComponent() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/venues" element={<Venues />} />
+        <Route path="/bookings" element={<Bookings />} />
       </Route>
     </Routes>
   );
