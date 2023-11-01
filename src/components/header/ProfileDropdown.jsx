@@ -1,9 +1,10 @@
 import { NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export function ProfileDropdown() {
   return (
     <NavDropdown title="Profile" id="basic-nav-dropdown">
-      <NavDropdown.Item href="/bookings">Your bookings</NavDropdown.Item>
+      <Link to="/bookings">Your bookings</Link>
       <NavDropdown.Item href="#">Change avatar</NavDropdown.Item>
       <NavDropdown.Divider />
       <NavDropdown.Item href="/venues">Your venues</NavDropdown.Item>
