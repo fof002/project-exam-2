@@ -5,7 +5,8 @@ import { SearchBar } from "./SearchBar";
 import logo from "./logo.png";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { CheckIfLoggedIn } from "./CheckIfLoggedIn";
+import { CheckIfLoggedInDropdown } from "./CheckIfLoggedInDropdown";
+import { CheckIfLoggedInLogin } from "./CheckIfLoggedInLogin";
 
 export function NavComponent() {
   return (
@@ -22,10 +23,11 @@ export function NavComponent() {
             />
           </Navbar.Brand>
         </Link>
+        <CheckIfLoggedInLogin />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <CheckIfLoggedIn />
+            <CheckIfLoggedInDropdown />
             <LinkContainer to="/about">
               <Nav.Link className="text-white" href="#">
                 About
