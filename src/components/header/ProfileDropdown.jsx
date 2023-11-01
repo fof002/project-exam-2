@@ -12,22 +12,28 @@ export function ProfileDropdown() {
   return (
     <NavDropdown title="Profile" id="basic-nav-dropdown">
       <LinkContainer to="/bookings">
-        <NavDropdown.Item href="#">
-          <FontAwesomeIcon icon={faPersonWalkingLuggage} /> Your bookings
+        <NavDropdown.Item className="d-flex align-items-center gap-2" href="#">
+          <FontAwesomeIcon icon={faPersonWalkingLuggage} />
+          <div>Your bookings</div>
         </NavDropdown.Item>
       </LinkContainer>
-      <NavDropdown.Item href="#">
-        <FontAwesomeIcon icon={faUserPlus} /> Change avatar
+      <NavDropdown.Item className="d-flex align-items-center gap-2" href="#">
+        <FontAwesomeIcon icon={faUserPlus} /> <div>Change avatar</div>
       </NavDropdown.Item>
       <NavDropdown.Divider />
       <LinkContainer to="/venues">
-        <NavDropdown.Item href="/venues">
-          <FontAwesomeIcon icon={faUtensils} /> Your venues
+        <NavDropdown.Item
+          className="d-flex align-items-center gap-2"
+          href="/venues"
+        >
+          <FontAwesomeIcon icon={faUtensils} />
+          <div>Your venues</div>
         </NavDropdown.Item>
       </LinkContainer>
       <NavDropdown.Divider />
-      <NavDropdown.Item href="#">
-        <FontAwesomeIcon icon={faArrowRightFromBracket} /> Log out
+      <NavDropdown.Item className="d-flex align-items-center gap-2" href="#">
+        <FontAwesomeIcon icon={faArrowRightFromBracket} />
+        <div>Log out</div>
       </NavDropdown.Item>
     </NavDropdown>
   );
