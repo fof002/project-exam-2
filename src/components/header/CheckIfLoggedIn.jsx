@@ -7,7 +7,7 @@ export function CheckIfLoggedIn() {
     <ProfileDropdown />
   ) : (
     <LinkContainer to="/login">
-      <Nav.Link className="text-white" href="#">
+      <Nav.Link className="text-primary bg-white rounded" href="#">
         Login
       </Nav.Link>
     </LinkContainer>
