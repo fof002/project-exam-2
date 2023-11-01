@@ -6,9 +6,7 @@ export function FooterComponent() {
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item">
           <Link className="text-decoration-none" to="/">
-            <div href="#" class="nav-link px-2 text-body-secondary">
-              Home
-            </div>
+            <div class="nav-link px-2 text-body-secondary">Home</div>
           </Link>
         </li>
         <li class="nav-item">

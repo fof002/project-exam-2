@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { SearchBar } from "./SearchBar";
 import logo from "./logo.png";
 import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 
 export function NavComponent() {
   return (
@@ -25,9 +26,11 @@ export function NavComponent() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <ProfileDropdown />
-            <Nav.Link className="text-white" href="/about">
-              About
-            </Nav.Link>
+            <LinkContainer to="/about">
+              <Nav.Link className="text-white" href="#">
+                About
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
           <SearchBar />
         </Navbar.Collapse>
