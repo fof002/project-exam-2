@@ -1,3 +1,5 @@
+import { LoginForm } from "./LoginForm";
+
 export function LoginPage() {
-  return "login";
+  return <LoginForm />;
 }

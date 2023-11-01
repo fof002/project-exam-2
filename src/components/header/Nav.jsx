@@ -1,4 +1,3 @@
-import { ProfileDropdown } from "./ProfileDropdown";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -6,6 +5,7 @@ import { SearchBar } from "./SearchBar";
 import logo from "./logo.png";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { CheckIfLoggedIn } from "./CheckIfLoggedIn";
 
 export function NavComponent() {
   return (
@@ -25,7 +25,7 @@ export function NavComponent() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <ProfileDropdown />
+            <CheckIfLoggedIn />
             <LinkContainer to="/about">
               <Nav.Link className="text-white" href="#">
                 About
