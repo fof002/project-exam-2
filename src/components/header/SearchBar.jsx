@@ -1,12 +1,19 @@
 import { Form, Row, Col, Container } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export function SearchBar() {
   return (
     <Form>
       <Container className="bg-white p-1 rounded" id="searchContainer">
         <Row className="d-flex">
-          <Col xs="auto"></Col>
-          <Col xs="auto">
+          <Col xs="auto" className="d-flex align-items-center">
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              style={{ fontSize: "1.3rem" }}
+              className="ps-2"
+            />
+
             <Form.Control
               type="text"
               id="searchInput"
