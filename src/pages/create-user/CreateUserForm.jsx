@@ -29,11 +29,8 @@ export function CreateUserForm() {
         <Form.Control type="text" />
         <Form.Text className="text-muted">Must be a valid image URL</Form.Text>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check
-          type="checkbox"
-          label="Check if you want to register as a venue manager"
-        />
+      <Form.Group className="mb-3" controlId="Checkbox">
+        <Form.Check type="checkbox" label="Register as a venue manager" />
       </Form.Group>
       <Button onClick={createUser} variant="primary" type="submit">
         Create User
