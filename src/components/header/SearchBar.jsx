@@ -18,7 +18,7 @@ export function SearchBar() {
               type="text"
               id="searchInput"
               placeholder="Search our venues..."
-              className=" mr-sm-2 bg-white .text-black-50 border-0"
+              className=" mr-sm-2 bg-white text-black-50 border-0"
               style={{ width: "100%" }}
             />
           </Col>

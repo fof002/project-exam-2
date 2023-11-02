@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
 export function CheckIfLoggedInLogin() {
-  return localStorage.getItem("user") ? (
+  return localStorage.getItem("user") !== null ? (
     ""
   ) : (
     <LinkContainer to="/login">

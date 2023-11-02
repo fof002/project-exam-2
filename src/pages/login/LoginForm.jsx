@@ -1,5 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from "react-router-dom";
+import { login } from "./login";
 
 export function LoginForm() {
   return (
@@ -13,9 +15,14 @@ export function LoginForm() {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button onClick={login} variant="primary" type="submit">
         Login
       </Button>
+      <Link to="/create-user">
+        <Button className="ms-2" variant="primary" type="submit">
+          Create User
+        </Button>
+      </Link>
     </Form>
   );
 }
