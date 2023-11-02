@@ -9,7 +9,7 @@ export function CheckIfLoggedInLogin() {
   ) : (
     <LinkContainer to="/login">
       <Nav.Link
-        className=" d-flex align-items-center rounded p-1 pe-3 color-primary bg-white"
+        className=" d-flex align-items-center rounded p-1 pe-3 color-primary bg-white me-2"
         id="login"
         href="#"
       >

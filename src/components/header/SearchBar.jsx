@@ -5,7 +5,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 export function SearchBar() {
   return (
     <Form>
-      <Container className="bg-white p-1 rounded" id="searchContainer">
+      <div className="bg-white p-1 rounded" id="searchContainer">
         <Row className="d-flex">
           <Col xs="auto" className="d-flex align-items-center">
             <FontAwesomeIcon
@@ -19,11 +19,11 @@ export function SearchBar() {
               id="searchInput"
               placeholder="Search our venues..."
               className=" mr-sm-2 bg-white .text-black-50 border-0"
-              style={{ minWidth: "20em" }}
+              style={{ width: "100%" }}
             />
           </Col>
         </Row>
-      </Container>
+      </div>
     </Form>
   );
 }
