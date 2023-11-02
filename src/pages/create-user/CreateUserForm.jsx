@@ -1,6 +1,5 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { createUser } from "./createUser";
 
 export function CreateUserForm() {
   return (
@@ -36,7 +35,7 @@ export function CreateUserForm() {
         <Form.Group className="mb-3" controlId="Checkbox">
           <Form.Check type="checkbox" label="Register as a venue manager" />
         </Form.Group>
-        <Button onClick={createUser} variant="primary" type="submit">
+        <Button variant="primary" type="submit">
           Create User
         </Button>
       </Form>
