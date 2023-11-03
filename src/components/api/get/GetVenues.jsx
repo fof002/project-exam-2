@@ -9,7 +9,6 @@ export function GetVenues() {
       const response = await fetch(BASE_URL + "venues?limit=12");
       const json = await response.json();
       setVenues(json);
-      console.log(venues);
     }
     getData();
   }, []);
