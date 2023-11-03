@@ -19,6 +19,16 @@ export function GetVenues() {
           key={venue.id}
           venueName={venue.name}
           venueUrl={venue.media[0]}
+          venueDescription={
+            venue.description.length > 100
+              ? venue.description.substring(0, 100) + "..."
+              : venue.description
+          }
+          venuePrice={venue.price}
+          address={venue.location.address}
+          city={venue.location.city}
+          country={venue.location.country}
+          services="Services"
         />
       ))}
     </div>

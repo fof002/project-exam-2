@@ -8,19 +8,16 @@ export function VenueCard(props) {
       <Card.Img className="rounded-0" variant="top" src={props.venueUrl} />
       <Card.Body>
         <Card.Title>{props.venueName}</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
+        <Card.Text>{props.venueDescription}</Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush fw-lighter fst-italic">
-        <ListGroup.Item>Price: 2$ per night</ListGroup.Item>
+        <ListGroup.Item>Price: {props.venuePrice}$ per night</ListGroup.Item>
+        <ListGroup.Item>Services: {props.services}</ListGroup.Item>
         <ListGroup.Item>
-          Services: breakfeast, parking, pets allowed, wifi
+          {props.address}, {props.city} , {props.country}
         </ListGroup.Item>
-        <ListGroup.Item>Adress, city, country</ListGroup.Item>
       </ListGroup>
-      <Card.Body>
+      <Card.Body className="d-flex align-items-end">
         <LinkContainer className="text-decoration-none" to="/about">
           <Card.Link href="#">View and book</Card.Link>
         </LinkContainer>
