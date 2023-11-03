@@ -1,10 +1,12 @@
 import { RouteComponent } from "./components/route/Index";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 function App() {
   return (
-    <div>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <RouteComponent />
-    </div>
+    </LocalizationProvider>
   );
 }
 
