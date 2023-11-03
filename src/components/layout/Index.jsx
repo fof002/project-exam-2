@@ -11,7 +11,7 @@ export function Layout() {
           <main
             id="mainContainer"
             className="d-flex flex-column align-items-center"
-            style={{ width: "min(60em,100%)" }}
+            style={{ width: "min(103em,100%)" }}
           >
             <Outlet />
           </main>

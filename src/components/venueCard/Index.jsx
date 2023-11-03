@@ -2,17 +2,12 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { LinkContainer } from "react-router-bootstrap";
 
-export function VenueCard() {
+export function VenueCard(props) {
   return (
     <Card className="rounded-0 card-item" style={{ width: "min(24rem,100%)" }}>
-      <Card.Img
-        className="rounded-0"
-        variant="top"
-        src="https://venueprofil.no/assets/images/gausel_galleri.webp"
-      />
+      <Card.Img className="rounded-0" variant="top" src={props.venueUrl} />
       <Card.Body>
-        <Card.Title>Very nice venue</Card.Title>
-
+        <Card.Title>{props.venueName}</Card.Title>
         <Card.Text>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
