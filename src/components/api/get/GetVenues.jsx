@@ -29,6 +29,7 @@ export function GetVenues() {
           city={venue.location.city}
           country={venue.location.country}
           services="Services"
+          venueId={venue.id}
         />
       ))}
     </div>

@@ -18,7 +18,12 @@ export function VenueCard(props) {
         </ListGroup.Item>
       </ListGroup>
       <Card.Body className="d-flex align-items-end">
-        <LinkContainer className="text-decoration-none" to="/about">
+        <LinkContainer
+          className="text-decoration-none"
+          to={{
+            pathname: `venue/${props.venueId}`,
+          }}
+        >
           <Card.Link href="#">View and book</Card.Link>
         </LinkContainer>
       </Card.Body>
