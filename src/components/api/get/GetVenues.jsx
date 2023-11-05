@@ -1,6 +1,7 @@
 import { VenueCard } from "../../venueCard/Index";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../../constants";
+import { getServiceMeta } from "./ServiceMeta";
 
 export function GetVenues() {
   const [venues, setVenues] = useState([]);
@@ -28,7 +29,7 @@ export function GetVenues() {
           address={venue.location.address}
           city={venue.location.city}
           country={venue.location.country}
-          services="Services"
+          services={getServiceMeta(venue.meta)}
           venueId={venue.id}
         />
       ))}
