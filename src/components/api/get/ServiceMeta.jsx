@@ -6,6 +6,6 @@ export function getServiceMeta(metaObject) {
     }
   }
   return filteredMetaArray.length !== 0
-    ? filteredMetaArray.toString()
-    : "No services available";
+    ? filteredMetaArray.toString().replaceAll(",", ", ")
+    : "None available";
 }
