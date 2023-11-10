@@ -1,23 +1,32 @@
-export function SingleVenueCard() {
+import { CalendarComponent } from "../calendar/CalendarComponent";
+import { changeBookingArray } from "../calendar/changeArray";
+
+export function SingleVenueCard(props) {
   return (
-    <div className="card mb-3" style={{ maxWidth: "540px" }}>
-      <div className="row g-0">
-        <div className="col-md-4">
-          <img src="..." class="img-fluid rounded-start" alt="..."></img>
+    <div className="rounded-0 border-0 card mb-3" style={{ maxWidth: "90rem" }}>
+      <div style={{ width: "50%" }} className="row g-0 d-flex flex-row">
+        <div style={{ width: "100%" }} className="col-md-4">
+          <img
+            style={{ width: "100%" }}
+            src={props.imageUrl}
+            className="rounded-0 img-fluid"
+            alt="..."
+          ></img>
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
+            <h5 className="card-title">{props.name}</h5>
+            <p className="card-text">{props.description}</p>
             <p className="card-text">
               <small className="text-body-secondary">
-                Last updated 3 mins ago
+                Services: {props.services}
               </small>
             </p>
+            <p className="card-text">
+              <small className="text-body-secondary">Yes yes yes</small>
+              {changeBookingArray(props.bookings)}
+            </p>
+            <CalendarComponent bookings={props.bookings} />
           </div>
         </div>
       </div>

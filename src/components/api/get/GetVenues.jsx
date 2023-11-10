@@ -29,6 +29,7 @@ export function GetVenues() {
           address={venue.location.address}
           city={venue.location.city}
           country={venue.location.country}
+          maxGuests={venue.maxGuests}
           services={getServiceMeta(venue.meta)}
           venueId={venue.id}
         />

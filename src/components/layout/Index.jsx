@@ -7,7 +7,10 @@ export function Layout() {
     <div id="fullContainer">
       <div>
         <HeaderComponent />
-        <div className="d-flex flex-column align-items-center mt-3 ms-3 me-3">
+        <div
+          className="d-flex flex-column align-items-center mt-3 ms-3 me-3"
+          style={{ margin: "0 auto" }}
+        >
           <main
             id="mainContainer"
             className="d-flex flex-column align-items-center"

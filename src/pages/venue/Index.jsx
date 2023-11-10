@@ -1,11 +1,9 @@
-import { DatePicker } from "@mui/x-date-pickers";
-import { GetSingleVenue } from "../../components/api/get/GetSingleVenue";
+import { GetVenue } from "../../components/api/get/GetSingleVenue";
 
 export function Venue() {
   return (
-    <div>
-      <DatePicker label="From" /> <DatePicker label="To" />
-      <GetSingleVenue />
+    <div className="d-flex align-items-center">
+      <GetVenue />
     </div>
   );
 }
