@@ -23,7 +23,7 @@ export function CreateUserForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [venueManager, setVenueManager] = useState(true);
+  const [venueManager, setVenueManager] = useState(false);
 
   async function onFormSubmit() {
     const body = {
@@ -34,13 +34,13 @@ export function CreateUserForm() {
       venueManager: venueManager,
     };
 
-    const response = await fetch(BASE_URL + "auth/register", {
+    /*const response = await fetch(BASE_URL + "auth/register", {
       method: "POST",
       headers: { "Content-type": "application/json;charset=UTF-8" },
       body: JSON.stringify(body),
     });
     const userCreated = await response.json();
-    console.log(userCreated);
+    console.log(userCreated);*/
     console.log(body);
   }
 
@@ -58,9 +58,9 @@ export function CreateUserForm() {
     if (event.target.name === "imageUrl") {
       setImageUrl(value);
     }
-    /*if (event.target.name === "venueManager") {
-      setVenueManager(value);
-    }*/
+    if (event.target.name === "venueManager") {
+      setVenueManager(document.querySelector("#checkboxVenue").checked);
+    }
   }
 
   const {
@@ -128,9 +128,9 @@ export function CreateUserForm() {
           <Form.Check
             name="venueManager"
             type="checkbox"
+            id="checkboxVenue"
             label="Register as a venue manager"
             onChange={onTextInputChange}
-            value={true}
           />
         </Form.Group>
         <Button variant="primary" type="submit">
