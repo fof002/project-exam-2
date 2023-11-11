@@ -17,11 +17,16 @@ export function LoginForm() {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-        <Button onClick={login} variant="primary" type="submit">
+        <Button
+          className="rounded-0"
+          onClick={login}
+          variant="primary"
+          type="submit"
+        >
           Login
         </Button>
         <Link to="/create-user">
-          <Button className="ms-2" variant="primary" type="submit">
+          <Button className="ms-2 rounded-0" variant="primary" type="submit">
             Create User
           </Button>
         </Link>

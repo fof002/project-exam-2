@@ -14,15 +14,15 @@ export function CreateUserForm() {
   const [imageUrl, setImageUrl] = useState("");
   const [venueManager, setVenueManager] = useState(false);
 
-  async function onFormSubmit(e) {
-    const body = {
-      name: username,
-      email: email,
-      password: password,
-      avatar: imageUrl,
-      venueManager: venueManager,
-    };
+  const body = {
+    name: username,
+    email: email,
+    password: password,
+    avatar: imageUrl,
+    venueManager: venueManager,
+  };
 
+  async function onFormSubmit() {
     try {
       const response = await fetch(BASE_URL + "auth/register", {
         method: "POST",
@@ -137,7 +137,7 @@ export function CreateUserForm() {
         </Form.Group>
         <div role="alert" style={{ display: "none" }}></div>
         <ul id="errorContainer" style={{ display: "none", color: "red" }}></ul>
-        <Button variant="primary" type="submit">
+        <Button className="rounded-0" variant="primary" type="submit">
           Create User
         </Button>
       </Form>

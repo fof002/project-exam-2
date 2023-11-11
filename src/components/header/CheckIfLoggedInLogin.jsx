@@ -3,7 +3,7 @@ import { Nav } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
-export function CheckIfLoggedInLogin() {
+export function CheckIfLoggedIn() {
   return localStorage.getItem("user") !== null ? (
     ""
   ) : (

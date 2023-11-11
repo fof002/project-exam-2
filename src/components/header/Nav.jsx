@@ -6,7 +6,7 @@ import logo from "./logo.png";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { CheckIfLoggedInDropdown } from "./CheckIfLoggedInDropdown";
-import { CheckIfLoggedInLogin } from "./CheckIfLoggedInLogin";
+import { CheckIfLoggedIn } from "./CheckIfLoggedInLogin";
 
 export function NavComponent() {
   return (
@@ -24,7 +24,7 @@ export function NavComponent() {
               />
             </Navbar.Brand>
           </Link>
-          <CheckIfLoggedInLogin />
+          <CheckIfLoggedIn />
         </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
