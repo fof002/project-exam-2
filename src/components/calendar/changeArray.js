@@ -9,16 +9,12 @@ export function changeBookingArray(bookingsFromAPI) {
       for (const [key, value] of Object.entries(bookingsFromAPI[i])) {
         if (key === "dateFrom") {
           let date = new Date(value);
-          let day = date.getUTCDate();
-          let month = date.getUTCMonth() + 1;
           let year = parseFloat(String(date.getUTCFullYear()).slice(-2));
           bookingDates.startDate = year;
         }
         if (key === "dateTo") {
           let date = new Date(value);
-          let day = date.getUTCDate();
           let month = date.getUTCMonth() + 1;
-          let year = String(date.getUTCFullYear()).slice(-2);
           bookingDates.endDate = month;
         }
         if (

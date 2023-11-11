@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../constants";
 import { schema } from "./yupSchema";
 import { displayErrors } from "../../components/api/errors/errors";
-import { displaySuccess } from "../../components/api/success/sucess";
 
 export function CreateUserForm() {
   const [username, setUsername] = useState("");
