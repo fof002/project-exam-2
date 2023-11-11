@@ -5,7 +5,7 @@ import { Layout } from "../layout/Index";
 import { Venues } from "../../pages/venues/Index";
 import { Bookings } from "../../pages/bookings/Index";
 import { LoginForm } from "../../pages/login/LoginForm";
-import { CreateUser } from "../../pages/create-user/Index";
+import { CreateUserComponent } from "../../pages/create-user/Index";
 import { Venue } from "../../pages/venue/Index";
 
 export function RouteComponent() {
@@ -17,7 +17,7 @@ export function RouteComponent() {
         <Route path="/venues" element={<Venues />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/create-user" element={<CreateUser />} />
+        <Route path="/create-user" element={<CreateUserComponent />} />
         <Route path="/venue/:id" element={<Venue />} />
       </Route>
     </Routes>

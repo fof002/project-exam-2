@@ -7,7 +7,7 @@ import { BASE_URL } from "../../constants";
 import { schema } from "./yupSchema";
 import { displayErrors } from "../../components/api/errors/errors";
 
-export function CreateUserForm() {
+export function CreateUser() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -84,8 +84,7 @@ export function CreateUserForm() {
           />
           <p style={{ color: "red" }}>{errors.username?.message}</p>
           <Form.Text className="text-muted">
-            Username must not contain punctuation symbols apart from underscore
-            _.
+            No special characters except underscore (_).
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="Email">

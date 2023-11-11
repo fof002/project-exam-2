@@ -1,5 +1,5 @@
-import { CreateUserForm } from "./CreateUserForm";
+import { CreateUser } from "./CreateUser";
 
-export function CreateUser() {
-  return <CreateUserForm />;
+export function CreateUserComponent() {
+  return <CreateUser />;
 }
