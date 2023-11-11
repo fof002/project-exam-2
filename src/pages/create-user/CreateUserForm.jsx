@@ -3,20 +3,10 @@ import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { BASE_URL } from "../../constants";
-
-export const schema = yup.object({
-  username: yup
-    .string()
-    .min(3, "Your username must be at least 3 characters.")
-    .max(10, "Your username cannot be longer than 10 characters")
-    .required("Please enter a username"),
-  password: yup
-    .string()
-    .min(8, "Your password cannot be longer than 8 characters")
-    .required("Please enter a password"),
-});
+import { schema } from "./yupSchema";
+import { displayErrors } from "../../components/api/errors/errors";
+import { displaySuccess } from "../../components/api/success/sucess";
 
 export function CreateUserForm() {
   const [username, setUsername] = useState("");
@@ -25,7 +15,7 @@ export function CreateUserForm() {
   const [imageUrl, setImageUrl] = useState("");
   const [venueManager, setVenueManager] = useState(false);
 
-  async function onFormSubmit() {
+  async function onFormSubmit(e) {
     const body = {
       name: username,
       email: email,
@@ -34,14 +24,24 @@ export function CreateUserForm() {
       venueManager: venueManager,
     };
 
-    /*const response = await fetch(BASE_URL + "auth/register", {
-      method: "POST",
-      headers: { "Content-type": "application/json;charset=UTF-8" },
-      body: JSON.stringify(body),
-    });
-    const userCreated = await response.json();
-    console.log(userCreated);*/
-    console.log(body);
+    try {
+      const response = await fetch(BASE_URL + "auth/register", {
+        method: "POST",
+        headers: { "Content-type": "application/json;charset=UTF-8" },
+        body: JSON.stringify(body),
+      });
+      const json = await response.json();
+      if (json.errors) {
+        displayErrors(json.errors);
+      } else {
+        window.location.href = "/login";
+      }
+    } catch (error) {
+      alert(
+        "Something went wrong!! Try again shortly or contact us for assitance"
+      );
+      console.log(error);
+    }
   }
 
   function onTextInputChange(event) {
@@ -83,7 +83,7 @@ export function CreateUserForm() {
             type="text"
             onChange={onTextInputChange}
           />
-          <p>{errors.username?.message}</p>
+          <p style={{ color: "red" }}>{errors.username?.message}</p>
           <Form.Text className="text-muted">
             Username must not contain punctuation symbols apart from underscore
             _.
@@ -92,10 +92,13 @@ export function CreateUserForm() {
         <Form.Group className="mb-3" controlId="Email">
           <Form.Label>Email address</Form.Label>
           <Form.Control
+            {...register("email")}
             type="email"
             name="email"
             onChange={onTextInputChange}
           />
+          <p style={{ color: "red" }}>{errors.email?.message}</p>
+
           <Form.Text className="text-muted">
             Must be a valid @noroff.no or @stud.noroff.no email
           </Form.Text>
@@ -108,7 +111,7 @@ export function CreateUserForm() {
             type="password"
             onChange={onTextInputChange}
           />
-          <p>{errors.password?.message}</p>
+          <p style={{ color: "red" }}>{errors.password?.message}</p>
           <Form.Text className="text-muted">
             The password must be at least 8 characters.
           </Form.Text>
@@ -121,7 +124,7 @@ export function CreateUserForm() {
             onChange={onTextInputChange}
           />
           <Form.Text className="text-muted">
-            Must be a valid image URL
+            Must be a valid image URL (optional)
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="Checkbox">
@@ -133,6 +136,8 @@ export function CreateUserForm() {
             onChange={onTextInputChange}
           />
         </Form.Group>
+        <div role="alert" style={{ display: "none" }}></div>
+        <ul id="errorContainer" style={{ display: "none", color: "red" }}></ul>
         <Button variant="primary" type="submit">
           Create User
         </Button>
