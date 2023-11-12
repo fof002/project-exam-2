@@ -3,11 +3,11 @@ import { LinkContainer } from "react-router-bootstrap";
 import {
   faArrowRightFromBracket,
   faUserPlus,
-  faUtensils,
   faPersonWalkingLuggage,
   faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { VenueManager } from "./VenueManager";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
@@ -27,19 +27,11 @@ export function ProfileDropdown() {
       <NavDropdown.Item className="d-flex align-items-center gap-1" href="#">
         <FontAwesomeIcon icon={faUserPlus} /> <div>Change avatar</div>
       </NavDropdown.Item>
-      <NavDropdown.Divider />
-      <LinkContainer to="/venues">
-        <NavDropdown.Item
-          className="d-flex align-items-center gap-1"
-          href="/venues"
-        >
-          <FontAwesomeIcon
-            icon={faUtensils}
-            style={{ position: "relative", top: "0.15em" }}
-          />
-          <div>Your venues</div>
-        </NavDropdown.Item>
-      </LinkContainer>
+      {JSON.parse(localStorage.getItem("user")).venueManager === true ? (
+        <VenueManager />
+      ) : (
+        ""
+      )}
       <NavDropdown.Divider />
       <NavDropdown.Item
         className="d-flex align-items-center gap-1"

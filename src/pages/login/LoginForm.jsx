@@ -13,8 +13,8 @@ export function LoginUser() {
     password: password,
   };
 
-  async function onFormSubmit() {
-    console.log(request);
+  async function onFormSubmit(event) {
+    event.preventDefault();
     try {
       const response = await fetch(BASE_URL + "auth/login", {
         method: "POST",
@@ -78,7 +78,7 @@ export function LoginUser() {
           Login
         </Button>
         <Link to="/create-user">
-          <Button className="ms-2 rounded-0" variant="primary" type="submit">
+          <Button className="ms-2 rounded-0" variant="primary">
             Create User
           </Button>
         </Link>
