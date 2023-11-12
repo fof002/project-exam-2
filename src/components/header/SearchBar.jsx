@@ -5,7 +5,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 export function SearchBar() {
   return (
     <Form>
-      <div className="bg-white p-1 rounded" id="searchContainer">
+      <div className="bg-white p-1" id="searchContainer">
         <Row className="d-flex">
           <Col xs="auto" className="d-flex align-items-center">
             <FontAwesomeIcon
