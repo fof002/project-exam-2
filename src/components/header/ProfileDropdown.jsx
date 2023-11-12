@@ -9,9 +9,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 export function ProfileDropdown() {
   return (
-    <NavDropdown title="Profile" id="basic-nav-dropdown">
+    <NavDropdown title={user.name} id="basic-nav-dropdown">
       <LinkContainer to="/bookings">
         <NavDropdown.Item className="d-flex align-items-center gap-1" href="#">
           <FontAwesomeIcon icon={faPersonWalkingLuggage} />
@@ -39,7 +41,14 @@ export function ProfileDropdown() {
         </NavDropdown.Item>
       </LinkContainer>
       <NavDropdown.Divider />
-      <NavDropdown.Item className="d-flex align-items-center gap-1" href="#">
+      <NavDropdown.Item
+        className="d-flex align-items-center gap-1"
+        href="#"
+        onClick={() => {
+          localStorage.removeItem("user");
+          window.location.assign("/");
+        }}
+      >
         <FontAwesomeIcon
           icon={faArrowRightFromBracket}
           style={{ position: "relative", top: "0.15em" }}

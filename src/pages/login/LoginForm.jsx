@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../constants";
-import { schema } from "./yupSchema";
 
 export function LoginUser() {
   const [email, setEmail] = useState("");
@@ -51,41 +48,31 @@ export function LoginUser() {
     }
   }
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
   return (
     <div style={{ width: "min(40em,100%)" }}>
       <h1>Login</h1>
-      <Form
-        style={{ width: "min(40em,100%)" }}
-        onSubmit={handleSubmit(onFormSubmit)}
-      >
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form style={{ width: "min(40em,100%)" }} onSubmit={onFormSubmit}>
+        <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
           <Form.Control
-            {...register("email")}
             type="email"
+            id="email"
             name="email"
             onChange={onTextInputChange}
+            required
           />
-          <p style={{ color: "red" }}>{errors.email?.message}</p>
 
           <Form.Text className="text-muted"></Form.Text>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            {...register("password")}
+            id="password"
             name="password"
             type="password"
             onChange={onTextInputChange}
+            required
           />
-          <p style={{ color: "red" }}>{errors.password?.message}</p>
         </Form.Group>
         <Button className="rounded-0" variant="primary" type="submit">
           Login
