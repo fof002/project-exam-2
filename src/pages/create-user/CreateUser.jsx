@@ -6,6 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../constants";
 import { schema } from "./yupSchema";
 import { displayErrors } from "../../components/api/errors/errors";
+import Modal from "react-bootstrap/Modal";
+import { LinkContainer } from "react-router-bootstrap";
 
 export function CreateUser() {
   const [username, setUsername] = useState("");
@@ -13,7 +15,9 @@ export function CreateUser() {
   const [password, setPassword] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [venueManager, setVenueManager] = useState(false);
-
+  //For modal
+  const [show, setShow] = useState(false);
+  //Modal end
   const body = {
     name: username,
     email: email,
@@ -33,7 +37,8 @@ export function CreateUser() {
       if (json.errors) {
         displayErrors(json.errors);
       } else {
-        window.location.href = "/login";
+        setShow(true);
+        console.log(json);
       }
     } catch (error) {
       alert(
@@ -83,7 +88,7 @@ export function CreateUser() {
             onChange={onTextInputChange}
           />
           <p style={{ color: "red" }}>{errors.username?.message}</p>
-          <Form.Text className="text-muted">
+          <Form.Text className="text-muted opacity-75">
             No special characters except underscore (_).
           </Form.Text>
         </Form.Group>
@@ -97,7 +102,7 @@ export function CreateUser() {
           />
           <p style={{ color: "red" }}>{errors.email?.message}</p>
 
-          <Form.Text className="text-muted">
+          <Form.Text className="text-muted opacity-75">
             Must be a valid @noroff.no or @stud.noroff.no email
           </Form.Text>
         </Form.Group>
@@ -110,7 +115,7 @@ export function CreateUser() {
             onChange={onTextInputChange}
           />
           <p style={{ color: "red" }}>{errors.password?.message}</p>
-          <Form.Text className="text-muted">
+          <Form.Text className="text-muted opacity-75">
             The password must be at least 8 characters.
           </Form.Text>
         </Form.Group>
@@ -121,7 +126,7 @@ export function CreateUser() {
             name="imageUrl"
             onChange={onTextInputChange}
           />
-          <Form.Text className="text-muted">
+          <Form.Text className="text-muted opacity-75">
             Must be a valid image URL (optional)
           </Form.Text>
         </Form.Group>
@@ -140,6 +145,20 @@ export function CreateUser() {
           Create User
         </Button>
       </Form>
+
+      <Modal show={show}>
+        <Modal.Header closeButton>
+          <Modal.Title>Well done!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          User created! You can now continue to our login page...
+        </Modal.Body>
+        <Modal.Footer>
+          <LinkContainer to="/login">
+            <Button variant="primary">Login</Button>
+          </LinkContainer>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

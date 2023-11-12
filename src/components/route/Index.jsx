@@ -4,9 +4,9 @@ import { About } from "../../pages/about/Index";
 import { Layout } from "../layout/Index";
 import { Venues } from "../../pages/venues/Index";
 import { Bookings } from "../../pages/bookings/Index";
-import { LoginForm } from "../../pages/login/LoginForm";
 import { CreateUserComponent } from "../../pages/create-user/Index";
 import { Venue } from "../../pages/venue/Index";
+import { LoginPage } from "../../pages/login/Index";
 
 export function RouteComponent() {
   return (
@@ -16,7 +16,7 @@ export function RouteComponent() {
         <Route path="/about" element={<About />} />
         <Route path="/venues" element={<Venues />} />
         <Route path="/bookings" element={<Bookings />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/create-user" element={<CreateUserComponent />} />
         <Route path="/venue/:id" element={<Venue />} />
       </Route>

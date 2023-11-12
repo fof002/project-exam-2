@@ -1,35 +1,31 @@
-import { CalendarComponent } from "../calendar/CalendarComponent";
-import { changeBookingArray } from "../calendar/changeArray";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import Calendar from "@demark-pro/react-booking-calendar";
 
 export function SingleVenueCard(props) {
   return (
-    <div className="rounded-0 border-0 card mb-3" style={{ maxWidth: "90rem" }}>
-      <div style={{ width: "50%" }} className="row g-0 d-flex flex-row">
-        <div style={{ width: "100%" }} className="col-md-4">
-          <img
-            style={{ width: "100%" }}
-            src={props.imageUrl}
-            className="rounded-0 img-fluid"
-            alt="..."
-          ></img>
-        </div>
-        <div className="col-md-8">
-          <div className="card-body">
-            <h5 className="card-title">{props.name}</h5>
-            <p className="card-text">{props.description}</p>
-            <p className="card-text">
-              <small className="text-body-secondary">
-                Services: {props.services}
-              </small>
-            </p>
-            <p className="card-text">
-              <small className="text-body-secondary">Yes yes yes</small>
-              {changeBookingArray(props.bookings)}
-            </p>
-            <CalendarComponent bookings={props.bookings} />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Card style={{ width: "min(95vw,50em)" }} className="rounded-0">
+      <Card.Img
+        className="rounded-0"
+        variant="top"
+        src={props.venueUrl}
+        style={{ maxHeight: "30em", width: "100%" }}
+      />
+      <Card.Body>
+        <Card.Title>{props.venueName}</Card.Title>
+        <Card.Text>{props.venueDescription}</Card.Text>
+      </Card.Body>
+      <ListGroup className="list-group-flush fw-lighter fst-italic">
+        <ListGroup.Item>Price: {props.venuePrice}$ per night</ListGroup.Item>
+        <ListGroup.Item>Max guests: {props.maxGuests}</ListGroup.Item>
+        <ListGroup.Item>Services: {props.services}</ListGroup.Item>
+        <ListGroup.Item>
+          {props.address}, {props.city}, {props.country}
+        </ListGroup.Item>
+      </ListGroup>
+      <Card.Body className="d-flex align-items-end">
+        <Calendar />
+      </Card.Body>
+    </Card>
   );
 }
