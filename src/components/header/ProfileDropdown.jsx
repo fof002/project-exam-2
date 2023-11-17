@@ -18,15 +18,7 @@ export function ProfileDropdown() {
 
   return (
     <div>
-      <div className="d-flex align-items-center">
-        <img
-          id="avatarImage"
-          alt="User profile"
-          height={25}
-          width={25}
-          className="rounded-circle"
-          src={user.avatar}
-        ></img>
+      <div>
         <NavDropdown title={user.name} id="basic-nav-dropdown">
           <LinkContainer to="/bookings">
             <NavDropdown.Item

@@ -8,11 +8,13 @@ import { LinkContainer } from "react-router-bootstrap";
 import { CheckIfLoggedInDropdown } from "./CheckIfLoggedInDropdown";
 import { CheckIfLoggedIn } from "./CheckIfLoggedInLogin";
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 export function NavComponent() {
   return (
     <Navbar expand="lg" className="bg-primary" bg="dark" data-bs-theme="light">
       <Container style={{ maxWidth: "100%" }}>
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <Link to="/">
             <Navbar.Brand>
               <img
@@ -24,6 +26,14 @@ export function NavComponent() {
               />
             </Navbar.Brand>
           </Link>
+          <img
+            id="avatarImage"
+            alt="User profile"
+            height={25}
+            width={25}
+            className="rounded-circle"
+            src={user.avatar}
+          ></img>
           <CheckIfLoggedIn />
         </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
