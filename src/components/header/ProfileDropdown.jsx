@@ -21,7 +21,7 @@ export function ProfileDropdown() {
       <div className="d-flex align-items-center">
         <img
           id="avatarImage"
-          alt="Profile image"
+          alt="User profile"
           height={25}
           width={25}
           className="rounded-circle"
