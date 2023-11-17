@@ -29,8 +29,8 @@ export function NavComponent() {
           <img
             id="avatarImage"
             alt="User profile"
-            height={25}
-            width={25}
+            height={35}
+            width={38}
             className="rounded-circle"
             src={user.avatar}
           ></img>
