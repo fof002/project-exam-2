@@ -32,6 +32,7 @@ export function GetVenues() {
           maxGuests={venue.maxGuests}
           services={getServiceMeta(venue.meta)}
           venueId={venue.id}
+          rating={venue.rating}
         />
       ))}
     </div>

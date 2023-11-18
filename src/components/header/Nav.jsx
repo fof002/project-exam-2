@@ -31,7 +31,7 @@ export function NavComponent() {
             alt="User profile"
             height={35}
             width={38}
-            className="rounded-circle me-3"
+            className="rounded-circle me-2"
             src={user.avatar}
           ></img>
           <CheckIfLoggedInDropdown />

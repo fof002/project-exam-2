@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import { HomePage } from "../../pages/home/Index";
 import { About } from "../../pages/about/Index";
 import { Layout } from "../layout/Index";
-import { Venues } from "../../pages/venues/Index";
 import { Bookings } from "../../pages/bookings/Index";
 import { CreateUserComponent } from "../../pages/create-user/Index";
 import { Venue } from "../../pages/venue/Index";
@@ -14,7 +13,6 @@ export function RouteComponent() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/venues" element={<Venues />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/create-user" element={<CreateUserComponent />} />

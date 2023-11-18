@@ -18,6 +18,7 @@ export function VenueCard(props) {
           <Card.Text>{props.venueDescription}</Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush fw-lighter fst-italic">
+          <ListGroup.Item>Price: {props.rating} stars</ListGroup.Item>
           <ListGroup.Item>Price: {props.venuePrice}$ per night</ListGroup.Item>
           <ListGroup.Item>Max guests: {props.maxGuests}</ListGroup.Item>
           <ListGroup.Item>Services: {props.services}</ListGroup.Item>
