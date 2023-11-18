@@ -3,7 +3,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils, faFolderPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { AddVenue } from "./AddVenue";
+import { AddVenue } from "./Add venue/Index";
 
 export function VenueManager() {
   const [modalShowVenue, setModalVenue] = useState(false);

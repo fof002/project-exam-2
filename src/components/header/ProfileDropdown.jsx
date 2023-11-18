@@ -4,7 +4,6 @@ import {
   faArrowRightFromBracket,
   faUserPlus,
   faPersonWalkingLuggage,
-  faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { VenueManager } from "./VenueManager";
@@ -29,13 +28,7 @@ export function ProfileDropdown() {
               <div>Your bookings</div>
             </NavDropdown.Item>
           </LinkContainer>
-          <NavDropdown.Item
-            className="d-flex align-items-center gap-1"
-            href="#"
-          >
-            <FontAwesomeIcon icon={faCalendarCheck} />
-            <div>Book a venue</div>
-          </NavDropdown.Item>
+
           <NavDropdown.Item
             onClick={() => setModalShow(true)}
             className="d-flex align-items-center gap-1"
