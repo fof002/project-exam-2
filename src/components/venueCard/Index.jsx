@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { LinkContainer } from "react-router-bootstrap";
+import { SetNumberOfStars } from "./SetNumberOfStars";
 
 export function VenueCard(props) {
   return (
@@ -18,7 +19,9 @@ export function VenueCard(props) {
           <Card.Text>{props.venueDescription}</Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush fw-lighter fst-italic">
-          <ListGroup.Item>Price: {props.rating} stars</ListGroup.Item>
+          <ListGroup.Item>
+            <SetNumberOfStars numberOfStars={props.rating} />
+          </ListGroup.Item>
           <ListGroup.Item>Price: {props.venuePrice}$ per night</ListGroup.Item>
           <ListGroup.Item>Max guests: {props.maxGuests}</ListGroup.Item>
           <ListGroup.Item>Services: {props.services}</ListGroup.Item>
