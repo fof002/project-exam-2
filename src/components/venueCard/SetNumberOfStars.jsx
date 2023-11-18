@@ -15,5 +15,9 @@ export function SetNumberOfStars(props) {
       <FontAwesomeIcon icon={faStar} key={star} style={{ color: "orange" }} />
     );
   });
-  return starsArray.length === 0 ? "Rating not available" : stars;
+  return starsArray.length === 0 ? (
+    <FontAwesomeIcon icon={faStar} style={{ color: "orange" }} />
+  ) : (
+    stars
+  );
 }

@@ -67,29 +67,155 @@ export function AddVenue(props) {
       <Modal.Body>
         <Form style={{ width: "min(40em,100%)" }}>
           <Form.Group className="mb-3">
+            <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Title"
-              id="title"
-              name="title"
+              id="name"
+              name="name"
               onChange={onTextInputChange}
               required
             />
           </Form.Group>
           <Form.Group className="mb-3">
+            <Form.Label>Image URL</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Title"
-              id="title"
-              name="title"
+              id="media"
+              name="media"
               onChange={onTextInputChange}
               required
             />
           </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              id="description"
+              name="description"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Price of venue</Form.Label>
+            <Form.Control
+              type="number"
+              id="price"
+              name="price"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Maximum number of guests</Form.Label>
+            <Form.Control
+              placeholder="Maximum 100"
+              type="number"
+              id="maxGuests"
+              name="maxGuests"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Star rating</Form.Label>
+            <Form.Control
+              placeholder="Out of 5"
+              type="number"
+              id="rating"
+              name="rating"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Adress</Form.Label>
+            <Form.Control
+              type="text"
+              id="adress"
+              name="adress"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>City</Form.Label>
+            <Form.Control
+              type="text"
+              id="city"
+              name="city"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Zip</Form.Label>
+            <Form.Control
+              type="text"
+              id="zip"
+              name="zip"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              id="country"
+              name="country"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              id="continent"
+              name="continent"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Latitude</Form.Label>
+            <Form.Control
+              type="number"
+              id="lat"
+              name="lat"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Longditude</Form.Label>
+            <Form.Control
+              type="number"
+              id="long"
+              name="long"
+              onChange={onTextInputChange}
+              required
+            />
+          </Form.Group>
+          {["checkbox"].map((type) => (
+            <div key={`default-${type}`} className="mb-3">
+              <Form.Check // prettier-ignore
+                type={type}
+                id="parking"
+                label="parking"
+              />
+
+              <Form.Check type={type} label="Wifi" id="wifi" />
+              <Form.Check type={type} label="Breakfast" id="breakfast" />
+              <Form.Check type={type} label="pets" id="pets" />
+            </div>
+          ))}
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onFormSubmit}>Change Avatar</Button>
+        <Button onClick={onFormSubmit}>Add venue</Button>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>

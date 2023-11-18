@@ -84,7 +84,8 @@ export function CreateUser() {
           <Form.Control
             {...register("username")}
             name="username"
-            type="text"
+            as="textarea"
+            rows={3}
             onChange={onTextInputChange}
           />
           <p style={{ color: "red" }}>{errors.username?.message}</p>
@@ -139,7 +140,6 @@ export function CreateUser() {
             onChange={onTextInputChange}
           />
         </Form.Group>
-        <div role="alert" style={{ display: "none" }}></div>
         <ul id="errorContainer" style={{ display: "none", color: "red" }}></ul>
         <Button className="rounded-0" variant="primary" type="submit">
           Create User
