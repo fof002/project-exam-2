@@ -1,45 +1,76 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { Form } from "react-bootstrap";
+import { Form, FormGroup } from "react-bootstrap";
 import { useState } from "react";
 import { BASE_URL } from "../../../constants";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "./yupSchema";
+import { displayErrors } from "../../api/errors/errors";
 
 export function AddVenue(props) {
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [media, setMedia] = useState("");
+  const [price, setPrice] = useState(0);
+  const [maxGuests, setMaxGuests] = useState(0);
+  const [rating, setRating] = useState(0);
+  const [wifi, setWifi] = useState(false);
+  const [parking, setParking] = useState(false);
+  const [breakfast, setBreakfast] = useState(false);
+  const [pets, setPets] = useState(false);
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
+  const [country, setCountry] = useState("");
+  const [continent, setContinent] = useState("");
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
 
   const request = {
-    avatar: avatarUrl,
+    name: name,
+    description: description,
+    media: [media],
+    price: parseFloat(price),
+    maxGuests: parseFloat(maxGuests),
+    rating: parseFloat(rating),
+    meta: {
+      wifi: wifi,
+      parking: parking,
+      breakfast: breakfast,
+      pets: pets,
+    },
+    location: {
+      address: address,
+      city: city,
+      zip: zip,
+      country: country,
+      continent: continent,
+      lat: parseFloat(lat),
+      lng: parseFloat(lng),
+    },
   };
 
   async function onFormSubmit(event) {
     event.preventDefault();
     const user = JSON.parse(localStorage.getItem("user"));
     const accessToken = user.accessToken;
-    const userName = user.name;
 
     try {
-      const response = await fetch(
-        BASE_URL + "profiles/" + userName + "/media",
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `bearer ${accessToken}`,
-            "Content-type": "application/json;charset=UTF-8",
-          },
-          body: JSON.stringify(request),
-        }
-      );
+      const response = await fetch(BASE_URL + "venues", {
+        method: "POST",
+        headers: {
+          Authorization: `bearer ${accessToken}`,
+          "Content-type": "application/json;charset=UTF-8",
+        },
+        body: JSON.stringify(request),
+      });
       const json = await response.json();
       if (json.errors) {
-        alert("this went to hell");
+        displayErrors(json.errors);
       } else {
-        const avatarImage = document.querySelector("#avatarImage");
-        const avatar = document.querySelector("#avatar");
-        avatar.value = "";
-        avatar.placeholder = "Avatar changed successfully!";
-        avatarImage.src = json.avatar;
-        user.avatar = json.avatar;
-        localStorage.setItem("user", JSON.stringify(user));
+        console.log(json);
+        window.location.assign("/");
       }
     } catch (error) {
       alert(
@@ -50,8 +81,67 @@ export function AddVenue(props) {
 
   function onTextInputChange(event) {
     const value = event.target.value;
-    setAvatarUrl(value);
+    if (event.target.name === "name") {
+      setName(value);
+    }
+    if (event.target.name === "description") {
+      setDescription(value);
+    }
+    if (event.target.name === "media") {
+      setMedia(value);
+    }
+    if (event.target.name === "price") {
+      setPrice(value);
+    }
+    if (event.target.name === "maxGuests") {
+      setMaxGuests(value);
+    }
+    if (event.target.name === "rating") {
+      setRating(value);
+    }
+    if (event.target.name === "wifi") {
+      setWifi(document.querySelector("#wifi").checked);
+    }
+    if (event.target.name === "parking") {
+      setParking(document.querySelector("#parking").checked);
+    }
+    if (event.target.name === "breakfast") {
+      setBreakfast(document.querySelector("#breakfast").checked);
+    }
+    if (event.target.name === "pets") {
+      setPets(document.querySelector("#pets").checked);
+    }
+    if (event.target.name === "address") {
+      setAddress(value);
+    }
+    if (event.target.name === "city") {
+      setCity(value);
+    }
+    if (event.target.name === "zip") {
+      setZip(value);
+    }
+    if (event.target.name === "country") {
+      setCountry(value);
+    }
+    if (event.target.name === "continent") {
+      setContinent(value);
+    }
+    if (event.target.name === "lat") {
+      setLat(value);
+    }
+    if (event.target.name === "lng") {
+      setLng(value);
+    }
   }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   return (
     <Modal
       {...props}
@@ -65,22 +155,29 @@ export function AddVenue(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form style={{ width: "min(40em,100%)" }}>
+        <Form
+          onSubmit={handleSubmit(onFormSubmit)}
+          style={{ width: "min(40em,100%)" }}
+        >
           <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
             <Form.Control
+              {...register("name")}
+              placeholder="Descriptive name"
               type="text"
               id="name"
               name="name"
               onChange={onTextInputChange}
               required
             />
+            <p style={{ color: "red" }}>{errors.name?.message}</p>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Image URL</Form.Label>
             <Form.Control
               type="text"
               id="media"
+              placeholder="Must be a valid image URL"
               name="media"
               onChange={onTextInputChange}
               required
@@ -89,6 +186,7 @@ export function AddVenue(props) {
           <Form.Group className="mb-3">
             <Form.Label>Description</Form.Label>
             <Form.Control
+              placeholder="Describe your venue"
               as="textarea"
               rows={3}
               id="description"
@@ -100,6 +198,7 @@ export function AddVenue(props) {
           <Form.Group className="mb-3">
             <Form.Label>Price of venue</Form.Label>
             <Form.Control
+              placeholder="Set the price per night"
               type="number"
               id="price"
               name="price"
@@ -130,7 +229,7 @@ export function AddVenue(props) {
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Adress</Form.Label>
+            <Form.Label>Address</Form.Label>
             <Form.Control
               type="text"
               id="adress"
@@ -160,7 +259,7 @@ export function AddVenue(props) {
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Country</Form.Label>
             <Form.Control
               type="text"
               id="country"
@@ -170,7 +269,7 @@ export function AddVenue(props) {
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Continent</Form.Label>
             <Form.Control
               type="text"
               id="continent"
@@ -193,19 +292,18 @@ export function AddVenue(props) {
             <Form.Label>Longditude</Form.Label>
             <Form.Control
               type="number"
-              id="long"
+              id="lng"
               name="long"
               onChange={onTextInputChange}
               required
             />
           </Form.Group>
+          <FormGroup style={{ fontWeight: "600" }}>
+            Available services (check if available)
+          </FormGroup>
           {["checkbox"].map((type) => (
             <div key={`default-${type}`} className="mb-3">
-              <Form.Check // prettier-ignore
-                type={type}
-                id="parking"
-                label="parking"
-              />
+              <Form.Check type={type} id="parking" label="parking" />
 
               <Form.Check type={type} label="Wifi" id="wifi" />
               <Form.Check type={type} label="Breakfast" id="breakfast" />
@@ -214,6 +312,8 @@ export function AddVenue(props) {
           ))}
         </Form>
       </Modal.Body>
+      <ul id="errorContainer" style={{ display: "none", color: "red" }}></ul>
+
       <Modal.Footer>
         <Button onClick={onFormSubmit}>Add venue</Button>
         <Button onClick={props.onHide}>Close</Button>
