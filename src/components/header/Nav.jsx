@@ -8,9 +8,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import { CheckIfLoggedInDropdown } from "./CheckIfLoggedInDropdown";
 import { CheckIfLoggedIn } from "./CheckIfLoggedInLogin";
 
-const user = JSON.parse(localStorage.getItem("user"));
-
 export function NavComponent() {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <Navbar expand="lg" className="bg-primary" bg="dark" data-bs-theme="light">
       <Container style={{ maxWidth: "100%" }}>
@@ -26,14 +25,19 @@ export function NavComponent() {
               />
             </Navbar.Brand>
           </Link>
-          <img
-            id="avatarImage"
-            alt="User profile"
-            height={20}
-            width={20}
-            className="rounded-circle me-2"
-            src={user.avatar}
-          ></img>
+          {user ? (
+            <img
+              id="avatarImage"
+              alt="User profile"
+              height={20}
+              width={20}
+              className="rounded-circle me-2"
+              src={user.avatar}
+            ></img>
+          ) : (
+            ""
+          )}
+
           <CheckIfLoggedInDropdown />
           <CheckIfLoggedIn />
         </div>
