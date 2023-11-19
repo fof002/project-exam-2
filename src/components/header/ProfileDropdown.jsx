@@ -23,7 +23,6 @@ export function ProfileDropdown() {
           <img
             id="avatarImage"
             alt="User profile"
-            onerror={icon}
             height={20}
             width={20}
             className="rounded-circle me-2"

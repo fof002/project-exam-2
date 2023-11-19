@@ -70,7 +70,7 @@ export function AddVenue(props) {
       if (json.errors) {
         displayErrors(json.errors);
       } else {
-        /*window.location.assign(`/your-venues`);*/
+        window.location.assign(`/your-venues`);
       }
     } catch (error) {
       alert(

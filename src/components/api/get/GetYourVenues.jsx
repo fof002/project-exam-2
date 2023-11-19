@@ -4,6 +4,7 @@ import { BASE_URL } from "../../../constants";
 import { getServiceMeta } from "./ServiceMeta";
 import { LoaderGrowing } from "../../GraphicEffects/LoaderGrowing";
 import { ErrorOccured } from "../../GraphicEffects/Error";
+import { deleteVenue } from "../../../pages/yourVenues/deleteVenue";
 
 export function GetVenues() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -54,6 +55,7 @@ export function GetVenues() {
       {venues.map((venue) => (
         <VenueCard
           key={venue.id}
+          owner={true}
           venueName={venue.name}
           venueUrl={venue.media[0]}
           venueDescription={
@@ -69,6 +71,7 @@ export function GetVenues() {
           services={getServiceMeta(venue.meta)}
           venueId={venue.id}
           rating={venue.rating}
+          deleteVenue={deleteVenue}
         />
       ))}
     </div>

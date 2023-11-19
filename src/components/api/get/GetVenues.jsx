@@ -17,6 +17,7 @@ export function GetVenues() {
         const response = await fetch(BASE_URL + "venues?limit=12&sort=created");
         const json = await response.json();
         setVenues(json);
+        console.log(json);
       } catch {
         setIsError(true);
         <ErrorOccured message="An error occured while loading venues. Please try again or contact us" />;
@@ -39,6 +40,7 @@ export function GetVenues() {
       {venues.map((venue) => (
         <VenueCard
           key={venue.id}
+          owner={false}
           venueName={venue.name}
           venueUrl={venue.media[0]}
           venueDescription={

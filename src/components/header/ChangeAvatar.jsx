@@ -5,8 +5,6 @@ import { useState } from "react";
 import { BASE_URL } from "../../constants";
 import { removeAvatar } from "./RemoveAvatar";
 
-const avatarInput = document.querySelector("#avatar");
-
 export function ChangeAvatar(props) {
   const [avatarUrl, setAvatarUrl] = useState(null);
 
@@ -36,6 +34,7 @@ export function ChangeAvatar(props) {
       if (json.errors) {
         alert(json.errors);
       } else {
+        const avatarInput = document.querySelector("#avatar");
         const avatarImage = document.querySelector("#avatarImage");
         avatarInput.value = "";
         user.avatar = json.avatar;

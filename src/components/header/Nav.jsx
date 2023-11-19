@@ -3,7 +3,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { SearchBar } from "./SearchBar";
 import logo from "./logo.png";
-import icon from "./icon.png";
 
 import { Link } from "react-router-dom";
 import { CheckIfLoggedInDropdown } from "./CheckIfLoggedInDropdown";
