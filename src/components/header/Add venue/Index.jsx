@@ -51,9 +51,8 @@ export function AddVenue(props) {
     },
   };
 
-  async function onFormSubmit(event) {
+  async function onFormSubmit() {
     console.log("funket");
-    event.preventDefault();
     const user = JSON.parse(localStorage.getItem("user"));
     const accessToken = user.accessToken;
 
@@ -71,8 +70,7 @@ export function AddVenue(props) {
       if (json.errors) {
         displayErrors(json.errors);
       } else {
-        console.log(json);
-        window.location.assign(`venue/${json.id}`);
+        /*window.location.assign(`/your-venues`);*/
       }
     } catch (error) {
       alert(
@@ -112,6 +110,7 @@ export function AddVenue(props) {
     }
     if (event.target.name === "pets") {
       setPets(document.querySelector("#pets").checked);
+      console.log("hei");
     }
     if (event.target.name === "address") {
       setAddress(value);
@@ -237,8 +236,8 @@ export function AddVenue(props) {
             <Form.Label>Address</Form.Label>
             <Form.Control
               type="text"
-              id="adress"
-              name="adress"
+              id="address"
+              name="address"
               onChange={onTextInputChange}
             />
           </Form.Group>
@@ -301,14 +300,37 @@ export function AddVenue(props) {
           </FormGroup>
           {["checkbox"].map((type) => (
             <div key={`default-${type}`} className="mb-3">
-              <Form.Check type={type} id="parking" label="parking" />
-
-              <Form.Check type={type} label="Wifi" id="wifi" />
-              <Form.Check type={type} label="Breakfast" id="breakfast" />
-              <Form.Check type={type} label="pets" id="pets" />
+              <Form.Check
+                type={type}
+                id="parking"
+                label="parking"
+                name="parking"
+                onChange={onTextInputChange}
+              />
+              <Form.Check
+                type={type}
+                label="Wifi"
+                id="wifi"
+                name="wifi"
+                onChange={onTextInputChange}
+              />
+              <Form.Check
+                type={type}
+                label="Breakfast"
+                name="breakfast"
+                id="breakfast"
+                onChange={onTextInputChange}
+              />
+              <Form.Check
+                type={type}
+                label="pets"
+                id="pets"
+                name="pets"
+                onChange={onTextInputChange}
+              />
             </div>
           ))}
-          <Button type="submit">Submit form</Button>{" "}
+          <Button type="submit">Add Venue</Button>
         </Form>
       </Modal.Body>
       <ul id="errorContainer" style={{ display: "none", color: "red" }}></ul>

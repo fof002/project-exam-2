@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { VenueManager } from "./VenueManager";
 import { ChangeAvatar } from "./ChangeAvatar";
 import { useState } from "react";
+import icon from "./icon.png";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
@@ -17,7 +18,27 @@ export function ProfileDropdown() {
 
   return (
     <div>
-      <div>
+      <div className="d-flex align-items-center">
+        {user.avatar ? (
+          <img
+            id="avatarImage"
+            alt="User profile"
+            onerror={icon}
+            height={20}
+            width={20}
+            className="rounded-circle me-2"
+            src={user.avatar}
+          ></img>
+        ) : (
+          <img
+            id="avatarImage"
+            alt="User profile"
+            height={20}
+            width={20}
+            className="rounded-circle me-2"
+            src={icon}
+          ></img>
+        )}
         <NavDropdown title={user.name} id="basic-nav-dropdown">
           <LinkContainer to="/bookings">
             <NavDropdown.Item

@@ -80,13 +80,14 @@ export function ChangeAvatar(props) {
             />
           </Form.Group>
         </Form>
-        <Button onClick={removeAvatar}>Remove avatar</Button>
 
         <Button onClick={onFormSubmit} className="ms-2">
           Change Avatar
         </Button>
       </Modal.Body>
       <Modal.Footer>
+        <Button onClick={removeAvatar}>Remove avatar</Button>
+
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
