@@ -11,7 +11,7 @@ export function VenueManager() {
   return (
     <div>
       <NavDropdown.Divider />
-      <LinkContainer to="/venues">
+      <LinkContainer to="/your-venues">
         <NavDropdown.Item
           className="d-flex align-items-center gap-1"
           href="/venues"

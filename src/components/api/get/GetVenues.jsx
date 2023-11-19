@@ -7,7 +7,7 @@ export function GetVenues() {
   const [venues, setVenues] = useState([]);
   useEffect(() => {
     async function getData() {
-      const response = await fetch(BASE_URL + "venues?limit=12");
+      const response = await fetch(BASE_URL + "venues?limit=12&sort=created");
       const json = await response.json();
       setVenues(json);
     }

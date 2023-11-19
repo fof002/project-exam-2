@@ -70,7 +70,7 @@ export function AddVenue(props) {
         displayErrors(json.errors);
       } else {
         console.log(json);
-        window.location.assign("/");
+        window.location.assign(`venue/${json.id}`);
       }
     } catch (error) {
       alert(
