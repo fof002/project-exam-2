@@ -6,7 +6,7 @@ export async function deleteVenue(event) {
   const accessToken = user.accessToken;
 
   try {
-    const response = await fetch(BASE_URL + "venues/" + venueId, {
+    await fetch(BASE_URL + "venues/" + venueId, {
       method: "DELETE",
       headers: {
         Authorization: `bearer ${accessToken}`,
