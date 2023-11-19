@@ -3,9 +3,12 @@ import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 import { BASE_URL } from "../../constants";
+import { removeAvatar } from "./RemoveAvatar";
+
+const avatarInput = document.querySelector("#avatar");
 
 export function ChangeAvatar(props) {
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState(null);
 
   const request = {
     avatar: avatarUrl,
@@ -31,15 +34,16 @@ export function ChangeAvatar(props) {
       );
       const json = await response.json();
       if (json.errors) {
-        alert("this went to hell");
+        alert(json.errors);
       } else {
         const avatarImage = document.querySelector("#avatarImage");
-        const avatar = document.querySelector("#avatar");
-        avatar.value = "";
-        avatar.placeholder = "Avatar changed successfully!";
-        avatarImage.src = json.avatar;
+        avatarInput.value = "";
         user.avatar = json.avatar;
         localStorage.setItem("user", JSON.stringify(user));
+        avatarUrl
+          ? (avatarInput.placeholder = "Avatar changed successfully!")
+          : (avatarInput.placeholder = "Avatar removed!");
+        avatarImage.src = json.avatar;
       }
     } catch (error) {
       alert(
@@ -73,14 +77,16 @@ export function ChangeAvatar(props) {
               id="avatar"
               name="avatar"
               onChange={onTextInputChange}
-              required
             />
           </Form.Group>
         </Form>
+        <Button onClick={removeAvatar}>Remove avatar</Button>
+
+        <Button onClick={onFormSubmit} className="ms-2">
+          Change Avatar
+        </Button>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onFormSubmit}>Change Avatar</Button>
-
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>

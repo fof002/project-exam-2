@@ -3,6 +3,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { SearchBar } from "./SearchBar";
 import logo from "./logo.png";
+import icon from "./icon.png";
+
 import { Link } from "react-router-dom";
 import { CheckIfLoggedInDropdown } from "./CheckIfLoggedInDropdown";
 import { CheckIfLoggedIn } from "./CheckIfLoggedInLogin";
@@ -24,17 +26,25 @@ export function NavComponent() {
               />
             </Navbar.Brand>
           </Link>
-          {user ? (
+          {user.avatar ? (
             <img
               id="avatarImage"
               alt="User profile"
+              onerror={icon}
               height={20}
               width={20}
               className="rounded-circle me-2"
               src={user.avatar}
             ></img>
           ) : (
-            ""
+            <img
+              id="avatarImage"
+              alt="User profile"
+              height={20}
+              width={20}
+              className="rounded-circle me-2"
+              src={icon}
+            ></img>
           )}
 
           <CheckIfLoggedInDropdown />

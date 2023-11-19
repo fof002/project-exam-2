@@ -2,18 +2,39 @@ import { VenueCard } from "../../venueCard/Index";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../../constants";
 import { getServiceMeta } from "./ServiceMeta";
+import { ErrorOccured } from "../../GraphicEffects/Error";
+import { LoaderGrowing } from "../../GraphicEffects/LoaderGrowing";
 
 export function GetVenues() {
   const [venues, setVenues] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   useEffect(() => {
     async function getData() {
-      const response = await fetch(BASE_URL + "venues?limit=12&sort=created");
-      const json = await response.json();
-      setVenues(json);
+      try {
+        setIsLoading(true);
+        setIsError(false);
+        const response = await fetch(BASE_URL + "venues?limit=12&sort=created");
+        const json = await response.json();
+        setVenues(json);
+      } catch {
+        setIsError(true);
+        <ErrorOccured message="An error occured while loading venues. Please try again or contact us" />;
+      } finally {
+        setIsLoading(false);
+      }
     }
     getData();
   }, []);
-  return (
+  if (isLoading) {
+    return <LoaderGrowing />;
+  }
+  if (isError) {
+    return (
+      <ErrorOccured message="An error occured while loading venues. Please try again or contact us" />
+    );
+  }
+  return venues.length > 0 ? (
     <div className="d-flex gap-4 flex-wrap justify-content-center">
       {venues.map((venue) => (
         <VenueCard
@@ -36,5 +57,7 @@ export function GetVenues() {
         />
       ))}
     </div>
+  ) : (
+    <ErrorOccured message="An error occured while loading venues. Please try again or contact us" />
   );
 }

@@ -52,6 +52,7 @@ export function AddVenue(props) {
   };
 
   async function onFormSubmit(event) {
+    console.log("funket");
     event.preventDefault();
     const user = JSON.parse(localStorage.getItem("user"));
     const accessToken = user.accessToken;
@@ -66,6 +67,7 @@ export function AddVenue(props) {
         body: JSON.stringify(request),
       });
       const json = await response.json();
+      console.log(json);
       if (json.errors) {
         displayErrors(json.errors);
       } else {
@@ -168,7 +170,6 @@ export function AddVenue(props) {
               id="name"
               name="name"
               onChange={onTextInputChange}
-              required
             />
             <p style={{ color: "red" }}>{errors.name?.message}</p>
           </Form.Group>
@@ -186,47 +187,51 @@ export function AddVenue(props) {
           <Form.Group className="mb-3">
             <Form.Label>Description</Form.Label>
             <Form.Control
+              {...register("description")}
               placeholder="Describe your venue"
               as="textarea"
               rows={3}
               id="description"
               name="description"
               onChange={onTextInputChange}
-              required
             />
+            <p style={{ color: "red" }}>{errors.description?.message}</p>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Price of venue</Form.Label>
             <Form.Control
+              {...register("price")}
               placeholder="Set the price per night"
               type="number"
               id="price"
               name="price"
               onChange={onTextInputChange}
-              required
             />
+            <p style={{ color: "red" }}>{errors.price?.message}</p>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Maximum number of guests</Form.Label>
             <Form.Control
+              {...register("maxGuests")}
               placeholder="Maximum 100"
               type="number"
               id="maxGuests"
               name="maxGuests"
               onChange={onTextInputChange}
-              required
             />
+            <p style={{ color: "red" }}>{errors.maxGuests?.message}</p>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Star rating</Form.Label>
             <Form.Control
+              {...register("rating")}
               placeholder="Out of 5"
               type="number"
               id="rating"
               name="rating"
               onChange={onTextInputChange}
-              required
             />
+            <p style={{ color: "red" }}>{errors.rating?.message}</p>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Address</Form.Label>
@@ -235,7 +240,6 @@ export function AddVenue(props) {
               id="adress"
               name="adress"
               onChange={onTextInputChange}
-              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -245,7 +249,6 @@ export function AddVenue(props) {
               id="city"
               name="city"
               onChange={onTextInputChange}
-              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -255,7 +258,6 @@ export function AddVenue(props) {
               id="zip"
               name="zip"
               onChange={onTextInputChange}
-              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -265,7 +267,6 @@ export function AddVenue(props) {
               id="country"
               name="country"
               onChange={onTextInputChange}
-              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -275,7 +276,6 @@ export function AddVenue(props) {
               id="continent"
               name="continent"
               onChange={onTextInputChange}
-              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -285,7 +285,6 @@ export function AddVenue(props) {
               id="lat"
               name="lat"
               onChange={onTextInputChange}
-              required
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -295,7 +294,6 @@ export function AddVenue(props) {
               id="lng"
               name="long"
               onChange={onTextInputChange}
-              required
             />
           </Form.Group>
           <FormGroup style={{ fontWeight: "600" }}>
@@ -310,12 +308,12 @@ export function AddVenue(props) {
               <Form.Check type={type} label="pets" id="pets" />
             </div>
           ))}
+          <Button type="submit">Submit form</Button>{" "}
         </Form>
       </Modal.Body>
       <ul id="errorContainer" style={{ display: "none", color: "red" }}></ul>
 
       <Modal.Footer>
-        <Button onClick={onFormSubmit}>Add venue</Button>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>

@@ -28,7 +28,6 @@ export function GetVenues() {
           }
         );
         const json = await response.json();
-        console.log(json);
         setVenues(json);
       } catch {
         setIsError(true);
