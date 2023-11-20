@@ -14,7 +14,7 @@ export function VenueCard(props) {
         <Card.Title>{props.venueName}</Card.Title>
         <Card.Text>{props.venueDescription}</Card.Text>
       </Card.Body>
-      <ListGroup className="list-group-flush fw-lighter fst-italic">
+      <ListGroup className="list-group-flush  fst-italic">
         <ListGroup.Item>
           <SetNumberOfStars numberOfStars={props.rating} />
         </ListGroup.Item>
@@ -22,7 +22,7 @@ export function VenueCard(props) {
         <ListGroup.Item>Max guests: {props.maxGuests}</ListGroup.Item>
         <ListGroup.Item>Services: {props.services}</ListGroup.Item>
         <ListGroup.Item>
-          {props.address}, {props.city} , {props.country}
+          {props.address}, {props.city}, {props.country}
         </ListGroup.Item>
       </ListGroup>
       <Card.Body className="d-flex align-items-end">

@@ -115,6 +115,7 @@ export function EditVenueForm(props) {
       style={{ width: "min(50em,100%)" }}
       className="d-flex flex-wrap align-items-center gap-2"
     >
+      <h1>Edit venue</h1>
       <Form.Group style={{ width: "min(40em,100%)" }} className="mb-3">
         <Form.Label>Name</Form.Label>
         <Form.Control

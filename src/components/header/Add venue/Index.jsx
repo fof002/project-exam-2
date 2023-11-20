@@ -122,7 +122,7 @@ export function AddVenue(props) {
       <Modal.Body>
         <Form
           onSubmit={handleSubmit(onFormSubmit)}
-          style={{ width: "min(40em,100%)" }}
+          style={{ width: "min(50em,100%)" }}
         >
           <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
@@ -160,42 +160,45 @@ export function AddVenue(props) {
             />
             <p style={{ color: "red" }}>{errors.description?.message}</p>
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Price of venue</Form.Label>
-            <Form.Control
-              {...register("price")}
-              placeholder="Set the price per night"
-              type="number"
-              id="price"
-              name="price"
-              onChange={onTextInputChange}
-            />
-            <p style={{ color: "red" }}>{errors.price?.message}</p>
+          <Form.Group className="mb-3 d-flex flex-wrap gap-3">
+            <div>
+              <Form.Label>Price of venue</Form.Label>
+              <Form.Control
+                {...register("price")}
+                placeholder="Set the price per night"
+                type="number"
+                id="price"
+                name="price"
+                onChange={onTextInputChange}
+              />
+              <p style={{ color: "red" }}>{errors.price?.message}</p>
+            </div>
+            <div>
+              <Form.Label>Maximum number of guests</Form.Label>
+              <Form.Control
+                {...register("maxGuests")}
+                placeholder="Maximum 100"
+                type="number"
+                id="maxGuests"
+                name="maxGuests"
+                onChange={onTextInputChange}
+              />
+              <p style={{ color: "red" }}>{errors.maxGuests?.message}</p>
+            </div>
+            <div>
+              <Form.Label>Star rating</Form.Label>
+              <Form.Control
+                {...register("rating")}
+                placeholder="Out of 5"
+                type="number"
+                id="rating"
+                name="rating"
+                onChange={onTextInputChange}
+              />
+              <p style={{ color: "red" }}>{errors.rating?.message}</p>
+            </div>
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Maximum number of guests</Form.Label>
-            <Form.Control
-              {...register("maxGuests")}
-              placeholder="Maximum 100"
-              type="number"
-              id="maxGuests"
-              name="maxGuests"
-              onChange={onTextInputChange}
-            />
-            <p style={{ color: "red" }}>{errors.maxGuests?.message}</p>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Star rating</Form.Label>
-            <Form.Control
-              {...register("rating")}
-              placeholder="Out of 5"
-              type="number"
-              id="rating"
-              name="rating"
-              onChange={onTextInputChange}
-            />
-            <p style={{ color: "red" }}>{errors.rating?.message}</p>
-          </Form.Group>
+
           <Form.Group className="mb-3">
             <Form.Label>Address</Form.Label>
             <Form.Control
@@ -241,29 +244,34 @@ export function AddVenue(props) {
               onChange={onLocationInputChange}
             />
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Latitude</Form.Label>
-            <Form.Control
-              type="number"
-              id="lat"
-              name="lat"
-              onChange={onLocationInputChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Longditude</Form.Label>
-            <Form.Control
-              type="number"
-              id="lng"
-              name="lng"
-              onChange={onLocationInputChange}
-            />
+          <Form.Group className="mb-3 d-flex gap-4">
+            <div>
+              <Form.Label>Latitude</Form.Label>
+              <Form.Control
+                type="number"
+                id="lat"
+                name="lat"
+                onChange={onLocationInputChange}
+              />
+            </div>
+            <div>
+              <Form.Label>Longditude</Form.Label>
+              <Form.Control
+                type="number"
+                id="lng"
+                name="lng"
+                onChange={onLocationInputChange}
+              />
+            </div>
           </Form.Group>
           <FormGroup style={{ fontWeight: "600" }}>
             Available services (check if available)
           </FormGroup>
           {["checkbox"].map((type) => (
-            <div key={`default-${type}`} className="mb-3">
+            <div
+              key={`default-${type}`}
+              className="mb-3 d-flex gap-4 flex-wrap"
+            >
               <Form.Check
                 type={type}
                 id="parking"
