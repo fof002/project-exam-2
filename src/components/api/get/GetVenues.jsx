@@ -17,7 +17,10 @@ export function GetVenues() {
         const response = await fetch(BASE_URL + "venues?limit=12&sort=created");
         const json = await response.json();
         setVenues(json);
-        console.log(json);
+        if (json.errors)
+          return (
+            <div>An error occured. Please try again shortly or contact us</div>
+          );
       } catch {
         setIsError(true);
         <ErrorOccured message="An error occured while loading venues. Please try again or contact us" />;
@@ -35,7 +38,7 @@ export function GetVenues() {
       <ErrorOccured message="An error occured while loading venues. Please try again or contact us" />
     );
   }
-  return venues.length > 0 ? (
+  return (
     <div className="d-flex gap-4 flex-wrap justify-content-center">
       {venues.map((venue) => (
         <VenueCard
@@ -59,7 +62,5 @@ export function GetVenues() {
         />
       ))}
     </div>
-  ) : (
-    <ErrorOccured message="An error occured while loading venues. Please try again or contact us" />
   );
 }

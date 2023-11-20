@@ -40,7 +40,7 @@ export function VenueCard(props) {
             <LinkContainer
               className="text-decoration-none"
               to={{
-                pathname: `venue/${props.venueId}`,
+                pathname: `/edit-venue/${props.venueId}`,
               }}
             >
               <Card.Link href="#" data-venue-id={props.venueId}>

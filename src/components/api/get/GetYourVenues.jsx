@@ -30,15 +30,23 @@ export function GetVenues() {
         );
         const json = await response.json();
         setVenues(json);
+        if (json.length === 0) {
+          <div
+            id="main-container"
+            className="d-flex gap-4 flex-wrap justify-content-center"
+          >
+            You dont have any venues yet
+          </div>;
+        }
       } catch {
         setIsError(true);
-        <ErrorOccured message="An error occured while loading your venues" />;
       } finally {
         setIsLoading(false);
       }
     }
     getData();
   }, [accessToken, name]);
+
   if (isLoading) {
     return <LoaderGrowing />;
   }
@@ -47,7 +55,14 @@ export function GetVenues() {
       <ErrorOccured message="An error occured while loading your venues" />
     );
   }
-  return venues.length !== 0 ? (
+  return venues.length === 0 ? (
+    <div
+      id="main-container"
+      className="d-flex gap-4 flex-wrap justify-content-center"
+    >
+      No venues found
+    </div>
+  ) : (
     <div
       id="main-container"
       className="d-flex gap-4 flex-wrap justify-content-center"
@@ -74,13 +89,6 @@ export function GetVenues() {
           deleteVenue={deleteVenue}
         />
       ))}
-    </div>
-  ) : (
-    <div
-      id="main-container"
-      className="d-flex gap-4 flex-wrap justify-content-center"
-    >
-      You dont have any venues yet
     </div>
   );
 }

@@ -9,50 +9,70 @@ import { schema } from "./yupSchema";
 import { displayErrors } from "../../api/errors/errors";
 
 export function AddVenue(props) {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [media, setMedia] = useState("");
-  const [price, setPrice] = useState(0);
-  const [maxGuests, setMaxGuests] = useState(0);
-  const [rating, setRating] = useState(0);
-  const [wifi, setWifi] = useState(false);
-  const [parking, setParking] = useState(false);
-  const [breakfast, setBreakfast] = useState(false);
-  const [pets, setPets] = useState(false);
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [zip, setZip] = useState("");
-  const [country, setCountry] = useState("");
-  const [continent, setContinent] = useState("");
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
-
-  const request = {
-    name: name,
-    description: description,
-    media: [media],
-    price: parseFloat(price),
-    maxGuests: parseFloat(maxGuests),
-    rating: parseFloat(rating),
+  const [form, setForm] = useState({
+    name: "",
+    description: "",
+    media: [],
+    price: 0,
+    maxGuests: 0,
+    rating: 0,
     meta: {
-      wifi: wifi,
-      parking: parking,
-      breakfast: breakfast,
-      pets: pets,
+      wifi: false,
+      parking: false,
+      breakfast: false,
+      pets: false,
     },
     location: {
-      address: address,
-      city: city,
-      zip: zip,
-      country: country,
-      continent: continent,
-      lat: parseFloat(lat),
-      lng: parseFloat(lng),
+      address: "",
+      city: "",
+      zip: "",
+      country: "",
+      continent: "",
+      lat: 0,
+      lng: 0,
     },
-  };
+  });
+
+  function onTextInputChange(e) {
+    let value = "";
+    e.target.type === "number"
+      ? (value = parseInt(e.target.value))
+      : (value = e.target.value);
+    if (e.target.name === "media") {
+      value = [e.target.value];
+    }
+    setForm({
+      ...form,
+      [e.target.name]: value,
+    });
+  }
+  function onMetaInputChange(e) {
+    let value = false;
+    e.target.checked === true ? (value = true) : (value = false);
+    setForm({
+      ...form,
+      meta: {
+        ...form.meta,
+        [e.target.name]: value,
+      },
+    });
+  }
+
+  function onLocationInputChange(e) {
+    let value = "";
+    e.target.type === "number"
+      ? (value = parseInt(e.target.value))
+      : (value = e.target.value);
+    setForm({
+      ...form,
+      location: {
+        ...form.location,
+        [e.target.name]: value,
+      },
+    });
+  }
 
   async function onFormSubmit() {
-    console.log("funket");
     const user = JSON.parse(localStorage.getItem("user"));
     const accessToken = user.accessToken;
 
@@ -63,7 +83,7 @@ export function AddVenue(props) {
           Authorization: `bearer ${accessToken}`,
           "Content-type": "application/json;charset=UTF-8",
         },
-        body: JSON.stringify(request),
+        body: JSON.stringify(form),
       });
       const json = await response.json();
       console.log(json);
@@ -76,62 +96,6 @@ export function AddVenue(props) {
       alert(
         "Something went wrong!! Try again shortly or contact us for assitance"
       );
-    }
-  }
-
-  function onTextInputChange(event) {
-    const value = event.target.value;
-    if (event.target.name === "name") {
-      setName(value);
-    }
-    if (event.target.name === "description") {
-      setDescription(value);
-    }
-    if (event.target.name === "media") {
-      setMedia(value);
-    }
-    if (event.target.name === "price") {
-      setPrice(value);
-    }
-    if (event.target.name === "maxGuests") {
-      setMaxGuests(value);
-    }
-    if (event.target.name === "rating") {
-      setRating(value);
-    }
-    if (event.target.name === "wifi") {
-      setWifi(document.querySelector("#wifi").checked);
-    }
-    if (event.target.name === "parking") {
-      setParking(document.querySelector("#parking").checked);
-    }
-    if (event.target.name === "breakfast") {
-      setBreakfast(document.querySelector("#breakfast").checked);
-    }
-    if (event.target.name === "pets") {
-      setPets(document.querySelector("#pets").checked);
-      console.log("hei");
-    }
-    if (event.target.name === "address") {
-      setAddress(value);
-    }
-    if (event.target.name === "city") {
-      setCity(value);
-    }
-    if (event.target.name === "zip") {
-      setZip(value);
-    }
-    if (event.target.name === "country") {
-      setCountry(value);
-    }
-    if (event.target.name === "continent") {
-      setContinent(value);
-    }
-    if (event.target.name === "lat") {
-      setLat(value);
-    }
-    if (event.target.name === "lng") {
-      setLng(value);
     }
   }
 
@@ -238,7 +202,7 @@ export function AddVenue(props) {
               type="text"
               id="address"
               name="address"
-              onChange={onTextInputChange}
+              onChange={onLocationInputChange}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -247,7 +211,7 @@ export function AddVenue(props) {
               type="text"
               id="city"
               name="city"
-              onChange={onTextInputChange}
+              onChange={onLocationInputChange}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -256,7 +220,7 @@ export function AddVenue(props) {
               type="text"
               id="zip"
               name="zip"
-              onChange={onTextInputChange}
+              onChange={onLocationInputChange}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -265,7 +229,7 @@ export function AddVenue(props) {
               type="text"
               id="country"
               name="country"
-              onChange={onTextInputChange}
+              onChange={onLocationInputChange}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -274,7 +238,7 @@ export function AddVenue(props) {
               type="text"
               id="continent"
               name="continent"
-              onChange={onTextInputChange}
+              onChange={onLocationInputChange}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -283,7 +247,7 @@ export function AddVenue(props) {
               type="number"
               id="lat"
               name="lat"
-              onChange={onTextInputChange}
+              onChange={onLocationInputChange}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -291,8 +255,8 @@ export function AddVenue(props) {
             <Form.Control
               type="number"
               id="lng"
-              name="long"
-              onChange={onTextInputChange}
+              name="lng"
+              onChange={onLocationInputChange}
             />
           </Form.Group>
           <FormGroup style={{ fontWeight: "600" }}>
@@ -305,28 +269,28 @@ export function AddVenue(props) {
                 id="parking"
                 label="parking"
                 name="parking"
-                onChange={onTextInputChange}
+                onChange={onMetaInputChange}
               />
               <Form.Check
                 type={type}
                 label="Wifi"
                 id="wifi"
                 name="wifi"
-                onChange={onTextInputChange}
+                onChange={onMetaInputChange}
               />
               <Form.Check
                 type={type}
                 label="Breakfast"
                 name="breakfast"
                 id="breakfast"
-                onChange={onTextInputChange}
+                onChange={onMetaInputChange}
               />
               <Form.Check
                 type={type}
                 label="pets"
                 id="pets"
                 name="pets"
-                onChange={onTextInputChange}
+                onChange={onMetaInputChange}
               />
             </div>
           ))}
