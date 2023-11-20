@@ -43,6 +43,26 @@ export function EditVenueComponent() {
   }
 
   if (venue) {
-    return <EditVenueForm />;
+    return (
+      <EditVenueForm
+        name={venue.name}
+        media={venue.media}
+        description={venue.description}
+        price={venue.price}
+        maxGuests={venue.maxGuests}
+        rating={venue.rating}
+        address={venue.location.address}
+        city={venue.location.city}
+        zip={venue.location.zip}
+        country={venue.location.country}
+        continent={venue.location.continent}
+        lng={venue.location.lng}
+        lat={venue.location.lat}
+        parking={venue.meta.parking}
+        wifi={venue.meta.wifi}
+        breakfast={venue.meta.breakfast}
+        pets={venue.meta.pets}
+      />
+    );
   }
 }
