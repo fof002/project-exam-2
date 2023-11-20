@@ -6,8 +6,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../components/header/Add venue/yupSchema";
 import { displayErrors } from "../../components/api/errors/errors";
+import { useParams } from "react-router-dom";
 
 export function EditVenueForm(props) {
+  const params = useParams();
+
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -76,7 +79,7 @@ export function EditVenueForm(props) {
     const accessToken = user.accessToken;
 
     try {
-      const response = await fetch(BASE_URL + "venues", {
+      const response = await fetch(BASE_URL + "venues/" + params.id, {
         method: "PUT",
         headers: {
           Authorization: `bearer ${accessToken}`,
@@ -298,7 +301,9 @@ export function EditVenueForm(props) {
           />
         </div>
       ))}
-      <Button type="submit">Add Venue</Button>
+      <Button id={props.id} type="submit">
+        Update venue
+      </Button>
     </Form>
   );
 }
