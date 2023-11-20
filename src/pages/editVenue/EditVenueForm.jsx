@@ -119,7 +119,7 @@ export function EditVenueForm(props) {
           type="text"
           id="name"
           name="name"
-          value={props.name}
+          defaultValue={props.name}
           onChange={onTextInputChange}
         />
         <p style={{ color: "red" }}>{errors.name?.message}</p>
@@ -131,7 +131,7 @@ export function EditVenueForm(props) {
           id="media"
           placeholder="Must be a valid image URL"
           name="media"
-          value={props.media}
+          defaultValue={props.media}
           onChange={onTextInputChange}
           required
         />
@@ -145,7 +145,7 @@ export function EditVenueForm(props) {
           rows={3}
           id="description"
           name="description"
-          value={props.description}
+          defaultValue={props.description}
           onChange={onTextInputChange}
         />
         <p style={{ color: "red" }}>{errors.description?.message}</p>
@@ -158,7 +158,7 @@ export function EditVenueForm(props) {
           type="number"
           id="price"
           name="price"
-          value={props.price}
+          defaultValue={props.price}
           onChange={onTextInputChange}
         />
         <p style={{ color: "red" }}>{errors.price?.message}</p>
@@ -171,7 +171,7 @@ export function EditVenueForm(props) {
           type="number"
           id="maxGuests"
           name="maxGuests"
-          value={props.maxGuests}
+          defaultValue={props.maxGuests}
           onChange={onTextInputChange}
         />
         <p style={{ color: "red" }}>{errors.maxGuests?.message}</p>
@@ -184,7 +184,7 @@ export function EditVenueForm(props) {
           type="number"
           id="rating"
           name="rating"
-          value={props.rating}
+          defaultValue={props.rating}
           onChange={onTextInputChange}
         />
         <p style={{ color: "red" }}>{errors.rating?.message}</p>
@@ -195,7 +195,7 @@ export function EditVenueForm(props) {
           type="text"
           id="address"
           name="address"
-          value={props.address}
+          defaultValue={props.address}
           onChange={onLocationInputChange}
         />
       </Form.Group>
@@ -205,7 +205,7 @@ export function EditVenueForm(props) {
           type="text"
           id="city"
           name="city"
-          value={props.city}
+          defaultValue={props.city}
           onChange={onLocationInputChange}
         />
       </Form.Group>
@@ -215,7 +215,7 @@ export function EditVenueForm(props) {
           type="text"
           id="zip"
           name="zip"
-          value={props.zip}
+          defaultValue={props.zip}
           onChange={onLocationInputChange}
         />
       </Form.Group>
@@ -225,7 +225,7 @@ export function EditVenueForm(props) {
           type="text"
           id="country"
           name="country"
-          value={props.country}
+          defaultValue={props.country}
           onChange={onLocationInputChange}
         />
       </Form.Group>
@@ -235,7 +235,7 @@ export function EditVenueForm(props) {
           type="text"
           id="continent"
           name="continent"
-          value={props.continent}
+          defaultValue={props.continent}
           onChange={onLocationInputChange}
         />
       </Form.Group>
@@ -245,7 +245,7 @@ export function EditVenueForm(props) {
           type="number"
           id="lat"
           name="lat"
-          value={props.lat}
+          defaultValue={props.lat}
           onChange={onLocationInputChange}
         />
       </Form.Group>
@@ -256,7 +256,7 @@ export function EditVenueForm(props) {
           id="lng"
           name="lng"
           onChange={onLocationInputChange}
-          value={props.lng}
+          defaultValue={props.lng}
         />
       </Form.Group>
       <FormGroup style={{ fontWeight: "600" }}>
@@ -269,7 +269,7 @@ export function EditVenueForm(props) {
             id="parking"
             label="parking"
             name="parking"
-            checked={props.parking}
+            defaultValue={props.parking}
             onChange={onMetaInputChange}
           />
           <Form.Check
@@ -277,7 +277,7 @@ export function EditVenueForm(props) {
             label="Wifi"
             id="wifi"
             name="wifi"
-            checked={props.wifi}
+            defaultValue={props.wifi}
             onChange={onMetaInputChange}
           />
           <Form.Check
@@ -285,7 +285,7 @@ export function EditVenueForm(props) {
             label="Breakfast"
             name="breakfast"
             id="breakfast"
-            checked={props.breakfast}
+            defaultValue={props.breakfast}
             onChange={onMetaInputChange}
           />
           <Form.Check
@@ -293,7 +293,7 @@ export function EditVenueForm(props) {
             label="pets"
             id="pets"
             name="pets"
-            checked={props.pets}
+            defaultValue={props.pets}
             onChange={onMetaInputChange}
           />
         </div>
