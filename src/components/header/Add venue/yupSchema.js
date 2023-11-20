@@ -4,7 +4,7 @@ export const schema = yup.object({
   name: yup
     .string()
     .min(3, "Venue name must be at least 3 characters.")
-    .max(15, "Venue name cannot be longer than 15 characters")
+    .max(50, "Venue name cannot be longer than 15 characters")
     .required("Please enter a venue name"),
   description: yup
     .string()

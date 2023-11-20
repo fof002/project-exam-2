@@ -12,26 +12,26 @@ export function EditVenueForm(props) {
   const params = useParams();
 
   const [form, setForm] = useState({
-    name: "",
-    description: "",
-    media: [],
-    price: 0,
-    maxGuests: 0,
-    rating: 0,
+    name: props.name,
+    description: props.description,
+    media: props.media,
+    price: props.price,
+    maxGuests: props.maxGuests,
+    rating: props.rating,
     meta: {
-      wifi: false,
-      parking: false,
-      breakfast: false,
-      pets: false,
+      wifi: props.wifi,
+      parking: props.parking,
+      breakfast: props.breakfast,
+      pets: props.pets,
     },
     location: {
-      address: "",
-      city: "",
-      zip: "",
-      country: "",
-      continent: "",
-      lat: 0,
-      lng: 0,
+      address: props.address,
+      city: props.city,
+      zip: props.zip,
+      country: props.country,
+      continent: props.continent,
+      lat: props.lat,
+      lng: props.lng,
     },
   });
 
@@ -112,9 +112,10 @@ export function EditVenueForm(props) {
   return (
     <Form
       onSubmit={handleSubmit(onFormSubmit)}
-      style={{ width: "min(60em,100%)" }}
+      style={{ width: "min(50em,100%)" }}
+      className="d-flex flex-wrap align-items-center gap-2"
     >
-      <Form.Group className="mb-3">
+      <Form.Group style={{ width: "min(40em,100%)" }} className="mb-3">
         <Form.Label>Name</Form.Label>
         <Form.Control
           {...register("name")}
@@ -127,7 +128,7 @@ export function EditVenueForm(props) {
         />
         <p style={{ color: "red" }}>{errors.name?.message}</p>
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Image URL</Form.Label>
         <Form.Control
           type="text"
@@ -139,13 +140,13 @@ export function EditVenueForm(props) {
           required
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Description</Form.Label>
         <Form.Control
           {...register("description")}
           placeholder="Describe your venue"
           as="textarea"
-          rows={3}
+          rows={5}
           id="description"
           name="description"
           defaultValue={props.description}
@@ -186,6 +187,7 @@ export function EditVenueForm(props) {
           placeholder="Out of 5"
           type="number"
           id="rating"
+          style={{ width: "min(20em,100%)" }}
           name="rating"
           defaultValue={props.rating}
           onChange={onTextInputChange}
@@ -262,17 +264,18 @@ export function EditVenueForm(props) {
           defaultValue={props.lng}
         />
       </Form.Group>
-      <FormGroup style={{ fontWeight: "600" }}>
-        Available services (check if available)
-      </FormGroup>
       {["checkbox"].map((type) => (
-        <div key={`default-${type}`} className="mb-3">
+        <div
+          style={{ width: "min(40em,100%)" }}
+          key={`default-${type}`}
+          className="d-flex gap-3 mb-3"
+        >
           <Form.Check
             type={type}
             id="parking"
             label="parking"
             name="parking"
-            defaultValue={props.parking}
+            defaultChecked={props.parking}
             onChange={onMetaInputChange}
           />
           <Form.Check
@@ -280,7 +283,7 @@ export function EditVenueForm(props) {
             label="Wifi"
             id="wifi"
             name="wifi"
-            defaultValue={props.wifi}
+            defaultChecked={props.wifi}
             onChange={onMetaInputChange}
           />
           <Form.Check
@@ -288,7 +291,7 @@ export function EditVenueForm(props) {
             label="Breakfast"
             name="breakfast"
             id="breakfast"
-            defaultValue={props.breakfast}
+            defaultChecked={props.breakfast}
             onChange={onMetaInputChange}
           />
           <Form.Check
@@ -296,14 +299,16 @@ export function EditVenueForm(props) {
             label="pets"
             id="pets"
             name="pets"
-            defaultValue={props.pets}
+            defaultChecked={props.pets}
             onChange={onMetaInputChange}
           />
         </div>
       ))}
-      <Button id={props.id} type="submit">
-        Update venue
-      </Button>
+      <FormGroup style={{ width: "min(40em,100%)" }}>
+        <Button id={props.id} type="submit">
+          Update venue
+        </Button>
+      </FormGroup>
     </Form>
   );
 }

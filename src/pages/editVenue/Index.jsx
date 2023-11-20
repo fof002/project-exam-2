@@ -2,7 +2,7 @@ import { EditVenueComponent } from "./EditVenue";
 
 export function EditVenue() {
   return (
-    <div>
+    <div className="d-flex justify-content-center">
       <EditVenueComponent />
     </div>
   );

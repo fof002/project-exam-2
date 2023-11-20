@@ -12,7 +12,6 @@ export function EditVenueComponent() {
   const [venue, setVenue] = useState([]);
 
   useEffect(() => {
-    console.log("startet");
     async function getData(event) {
       try {
         setIsLoading(true);
@@ -43,10 +42,10 @@ export function EditVenueComponent() {
     );
   }
 
-  if (venue !== undefined) {
+  if (venue.location) {
     return (
       <EditVenueForm
-        /* name={venue.name}
+        name={venue.name}
         media={venue.media}
         description={venue.description}
         price={venue.price}
@@ -62,7 +61,7 @@ export function EditVenueComponent() {
         parking={venue.meta.parking}
         wifi={venue.meta.wifi}
         breakfast={venue.meta.breakfast}
-        pets={venue.meta.pets}*/
+        pets={venue.meta.pets}
         id={venue.id}
       />
     );
