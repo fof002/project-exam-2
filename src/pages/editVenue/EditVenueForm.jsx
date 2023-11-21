@@ -113,10 +113,9 @@ export function EditVenueForm(props) {
     <Form
       onSubmit={handleSubmit(onFormSubmit)}
       style={{ width: "min(50em,100%)" }}
-      className="d-flex flex-wrap align-items-center gap-2"
     >
       <h1>Edit venue</h1>
-      <Form.Group style={{ width: "min(40em,100%)" }} className="mb-3">
+      <Form.Group className="mb-3">
         <Form.Label>Name</Form.Label>
         <Form.Control
           {...register("name")}
@@ -129,7 +128,7 @@ export function EditVenueForm(props) {
         />
         <p style={{ color: "red" }}>{errors.name?.message}</p>
       </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
+      <Form.Group className="mb-3">
         <Form.Label>Image URL</Form.Label>
         <Form.Control
           type="text"
@@ -141,7 +140,7 @@ export function EditVenueForm(props) {
           required
         />
       </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
+      <Form.Group className="mb-3">
         <Form.Label>Description</Form.Label>
         <Form.Control
           {...register("description")}
@@ -155,116 +154,125 @@ export function EditVenueForm(props) {
         />
         <p style={{ color: "red" }}>{errors.description?.message}</p>
       </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>Price of venue</Form.Label>
-        <Form.Control
-          {...register("price")}
-          placeholder="Set the price per night"
-          type="number"
-          id="price"
-          name="price"
-          defaultValue={props.price}
-          onChange={onTextInputChange}
-        />
-        <p style={{ color: "red" }}>{errors.price?.message}</p>
+      <Form.Group className="mb-3 d-flex flex-wrap gap-3 input-container">
+        <div>
+          <Form.Label>Price of venue</Form.Label>
+          <Form.Control
+            {...register("price")}
+            placeholder="Set the price per night"
+            type="number"
+            id="price"
+            name="price"
+            defaultValue={props.price}
+            onChange={onTextInputChange}
+          />
+          <p style={{ color: "red" }}>{errors.price?.message}</p>
+        </div>
+        <div>
+          <Form.Label>Max guests</Form.Label>
+          <Form.Control
+            {...register("maxGuests")}
+            placeholder="Max 100"
+            type="number"
+            id="maxGuests"
+            name="maxGuests"
+            defaultValue={props.maxGuests}
+            onChange={onTextInputChange}
+          />
+          <p style={{ color: "red" }}>{errors.maxGuests?.message}</p>
+        </div>
+        <div>
+          <Form.Label>Star rating</Form.Label>
+          <Form.Control
+            {...register("rating")}
+            placeholder="Out of 5"
+            type="number"
+            id="rating"
+            style={{ width: "min(20em,100%)" }}
+            name="rating"
+            defaultValue={props.rating}
+            onChange={onTextInputChange}
+          />
+          <p style={{ color: "red" }}>{errors.rating?.message}</p>
+        </div>
       </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>Maximum number of guests</Form.Label>
-        <Form.Control
-          {...register("maxGuests")}
-          placeholder="Maximum 100"
-          type="number"
-          id="maxGuests"
-          name="maxGuests"
-          defaultValue={props.maxGuests}
-          onChange={onTextInputChange}
-        />
-        <p style={{ color: "red" }}>{errors.maxGuests?.message}</p>
+      <Form.Group className="mb-3 d-flex flex-wrap gap-4 input-container">
+        <div>
+          <Form.Label>Address</Form.Label>
+          <Form.Control
+            type="text"
+            id="address"
+            name="address"
+            defaultValue={props.address}
+            onChange={onLocationInputChange}
+          />
+        </div>
+        <div>
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            type="text"
+            id="city"
+            name="city"
+            defaultValue={props.city}
+            onChange={onLocationInputChange}
+          />
+        </div>
+        <div>
+          <Form.Label>Zip</Form.Label>
+          <Form.Control
+            type="text"
+            id="zip"
+            name="zip"
+            defaultValue={props.zip}
+            onChange={onLocationInputChange}
+          />
+        </div>
+        <div style={{ flex: "1 1 10em" }}>
+          <Form.Label>Country</Form.Label>
+          <Form.Control
+            type="text"
+            id="country"
+            name="country"
+            defaultValue={props.country}
+            onChange={onLocationInputChange}
+          />
+        </div>
+        <div style={{ flex: "1 1 10em" }}>
+          <Form.Label>Continent</Form.Label>
+          <Form.Control
+            type="text"
+            id="continent"
+            name="continent"
+            defaultValue={props.continent}
+            onChange={onLocationInputChange}
+          />
+        </div>
       </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>Star rating</Form.Label>
-        <Form.Control
-          {...register("rating")}
-          placeholder="Out of 5"
-          type="number"
-          id="rating"
-          style={{ width: "min(20em,100%)" }}
-          name="rating"
-          defaultValue={props.rating}
-          onChange={onTextInputChange}
-        />
-        <p style={{ color: "red" }}>{errors.rating?.message}</p>
+      <Form.Group className="mb-3 d-flex gap-4">
+        <div>
+          <Form.Label>Latitude</Form.Label>
+          <Form.Control
+            type="number"
+            id="lat"
+            name="lat"
+            defaultValue={props.lat}
+            onChange={onLocationInputChange}
+          />
+        </div>
+        <div>
+          <Form.Label>Longditude</Form.Label>
+          <Form.Control
+            type="number"
+            id="lng"
+            name="lng"
+            onChange={onLocationInputChange}
+            defaultValue={props.lng}
+          />
+        </div>
       </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>Address</Form.Label>
-        <Form.Control
-          type="text"
-          id="address"
-          name="address"
-          defaultValue={props.address}
-          onChange={onLocationInputChange}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>City</Form.Label>
-        <Form.Control
-          type="text"
-          id="city"
-          name="city"
-          defaultValue={props.city}
-          onChange={onLocationInputChange}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>Zip</Form.Label>
-        <Form.Control
-          type="text"
-          id="zip"
-          name="zip"
-          defaultValue={props.zip}
-          onChange={onLocationInputChange}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>Country</Form.Label>
-        <Form.Control
-          type="text"
-          id="country"
-          name="country"
-          defaultValue={props.country}
-          onChange={onLocationInputChange}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>Continent</Form.Label>
-        <Form.Control
-          type="text"
-          id="continent"
-          name="continent"
-          defaultValue={props.continent}
-          onChange={onLocationInputChange}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>Latitude</Form.Label>
-        <Form.Control
-          type="number"
-          id="lat"
-          name="lat"
-          defaultValue={props.lat}
-          onChange={onLocationInputChange}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
-        <Form.Label>Longditude</Form.Label>
-        <Form.Control
-          type="number"
-          id="lng"
-          name="lng"
-          onChange={onLocationInputChange}
-          defaultValue={props.lng}
-        />
-      </Form.Group>
+      <FormGroup style={{ fontWeight: "600" }}>
+        Available services (check if available)
+      </FormGroup>
       {["checkbox"].map((type) => (
         <div
           style={{ width: "min(40em,100%)" }}
@@ -305,11 +313,7 @@ export function EditVenueForm(props) {
           />
         </div>
       ))}
-      <FormGroup style={{ width: "min(40em,100%)" }}>
-        <Button id={props.id} type="submit">
-          Update venue
-        </Button>
-      </FormGroup>
+      <Button type="submit">Update venue</Button>
     </Form>
   );
 }
