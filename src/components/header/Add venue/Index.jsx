@@ -246,7 +246,7 @@ export function AddVenue(props) {
             </div>
           </Form.Group>
           <Form.Group className="mb-3 d-flex gap-4">
-            <div>
+            <div style={{ flex: "1 1 4em" }}>
               <Form.Label>Latitude</Form.Label>
               <Form.Control
                 type="number"
@@ -255,7 +255,7 @@ export function AddVenue(props) {
                 onChange={onLocationInputChange}
               />
             </div>
-            <div>
+            <div style={{ flex: "1 1 4em" }}>
               <Form.Label>Longditude</Form.Label>
               <Form.Control
                 type="number"
@@ -271,7 +271,7 @@ export function AddVenue(props) {
           {["checkbox"].map((type) => (
             <div
               key={`default-${type}`}
-              className="mb-3 d-flex gap-4 flex-wrap"
+              className="mb-3 d-flex gap-3 flex-wrap"
             >
               <Form.Check
                 type={type}

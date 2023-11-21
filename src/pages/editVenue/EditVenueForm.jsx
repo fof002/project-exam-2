@@ -113,6 +113,7 @@ export function EditVenueForm(props) {
     <Form
       onSubmit={handleSubmit(onFormSubmit)}
       style={{ width: "min(50em,100%)" }}
+      className="edit-form"
     >
       <h1>Edit venue</h1>
       <Form.Group className="mb-3">
@@ -249,7 +250,7 @@ export function EditVenueForm(props) {
         </div>
       </Form.Group>
       <Form.Group className="mb-3 d-flex gap-4">
-        <div>
+        <div style={{ flex: "1 1 4em" }}>
           <Form.Label>Latitude</Form.Label>
           <Form.Control
             type="number"
@@ -259,7 +260,7 @@ export function EditVenueForm(props) {
             onChange={onLocationInputChange}
           />
         </div>
-        <div>
+        <div style={{ flex: "1 1 4em" }}>
           <Form.Label>Longditude</Form.Label>
           <Form.Control
             type="number"
