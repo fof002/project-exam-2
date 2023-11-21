@@ -1,9 +1,10 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { SearchBar } from "./SearchBar";
+import { SearchBar } from "./search/SearchBar";
 import logo from "./logo.png";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { CheckIfLoggedInDropdown } from "./CheckIfLoggedInDropdown";
 import { CheckIfLoggedIn } from "./CheckIfLoggedInLogin";
@@ -27,7 +28,12 @@ export function NavComponent() {
           <CheckIfLoggedInDropdown />
           <CheckIfLoggedIn />
         </div>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav">
+          <FontAwesomeIcon
+            style={{ fontSize: "1.5rem" }}
+            icon={faMagnifyingGlass}
+          />
+        </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto"></Nav>
           <SearchBar />

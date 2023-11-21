@@ -38,7 +38,11 @@ export function ProfileDropdown() {
             src={icon}
           ></img>
         )}
-        <NavDropdown title={user.name} id="basic-nav-dropdown">
+        <NavDropdown
+          title={user.name}
+          style={{ fontSize: "1.1rem" }}
+          id="basic-nav-dropdown"
+        >
           <LinkContainer to="/bookings">
             <NavDropdown.Item
               className="d-flex align-items-center gap-1"
