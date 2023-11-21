@@ -157,7 +157,7 @@ export function EditVenueForm(props) {
       </Form.Group>
       <Form.Group className="mb-3 d-flex flex-wrap gap-3 input-container">
         <div style={{ flex: "1 1 4em" }}>
-          <Form.Label>Price of venue</Form.Label>
+          <Form.Label>Price</Form.Label>
           <Form.Control
             {...register("price")}
             placeholder="Set the price per night"
