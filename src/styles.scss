@@ -60,7 +60,9 @@ $theme-colors: (
   background: rgb(235, 234, 234) !important;
   min-width: 30em !important;
 }
-
+label {
+  font-style: italic;
+}
 input,
 textarea {
   border-radius: 0 !important;

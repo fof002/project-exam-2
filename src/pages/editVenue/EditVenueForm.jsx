@@ -155,7 +155,7 @@ export function EditVenueForm(props) {
         <p style={{ color: "red" }}>{errors.description?.message}</p>
       </Form.Group>
       <Form.Group className="mb-3 d-flex flex-wrap gap-3 input-container">
-        <div>
+        <div style={{ flex: "1 1 4em" }}>
           <Form.Label>Price of venue</Form.Label>
           <Form.Control
             {...register("price")}
@@ -168,7 +168,7 @@ export function EditVenueForm(props) {
           />
           <p style={{ color: "red" }}>{errors.price?.message}</p>
         </div>
-        <div>
+        <div style={{ flex: "1 1 4em" }}>
           <Form.Label>Max guests</Form.Label>
           <Form.Control
             {...register("maxGuests")}
@@ -181,7 +181,7 @@ export function EditVenueForm(props) {
           />
           <p style={{ color: "red" }}>{errors.maxGuests?.message}</p>
         </div>
-        <div>
+        <div style={{ flex: "1 1 4em" }}>
           <Form.Label>Star rating</Form.Label>
           <Form.Control
             {...register("rating")}
@@ -227,7 +227,7 @@ export function EditVenueForm(props) {
             onChange={onLocationInputChange}
           />
         </div>
-        <div style={{ flex: "1 1 10em" }}>
+        <div>
           <Form.Label>Country</Form.Label>
           <Form.Control
             type="text"
@@ -237,7 +237,7 @@ export function EditVenueForm(props) {
             onChange={onLocationInputChange}
           />
         </div>
-        <div style={{ flex: "1 1 10em" }}>
+        <div>
           <Form.Label>Continent</Form.Label>
           <Form.Control
             type="text"
