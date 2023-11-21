@@ -23,12 +23,10 @@ export function SearchBar() {
     getVenues();
   }, []);
   const filteredProducts = venues.filter((venue) => {
-    if (document.querySelector("#searchInput").value.length === 0) {
-      document.querySelector("#searchUrl").style.display = "none";
-    } else {
-      document.querySelector("#searchUrl").style.display = "block";
-      return venue.name.toLowerCase().includes(query.toLowerCase());
-    }
+    document.querySelector("#searchInput").value.length === 0
+      ? (document.querySelector("#searchUrl").style.display = "none")
+      : (document.querySelector("#searchUrl").style.display = "block");
+    return venue.name.toLowerCase().includes(query.toLowerCase());
   });
   function showList() {
     const listOfProducts = document.querySelector("#searchUrl");
