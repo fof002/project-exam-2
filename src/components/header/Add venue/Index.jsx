@@ -245,7 +245,7 @@ export function AddVenue(props) {
               />
             </div>
           </Form.Group>
-          <Form.Group className="mb-3 d-flex flex-wrap gap-4 input-container">
+          <Form.Group className="mb-3 d-flex gap-4">
             <div>
               <Form.Label>Latitude</Form.Label>
               <Form.Control
