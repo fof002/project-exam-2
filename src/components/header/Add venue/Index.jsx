@@ -160,12 +160,12 @@ export function AddVenue(props) {
             />
             <p style={{ color: "red" }}>{errors.description?.message}</p>
           </Form.Group>
-          <Form.Group className="mb-3 d-flex flex-wrap gap-3">
+          <Form.Group className="mb-3 d-flex flex-wrap gap-3 input-container">
             <div>
-              <Form.Label>Price of venue</Form.Label>
+              <Form.Label>Price</Form.Label>
               <Form.Control
                 {...register("price")}
-                placeholder="Set the price per night"
+                placeholder="Per night"
                 type="number"
                 id="price"
                 name="price"
@@ -174,10 +174,10 @@ export function AddVenue(props) {
               <p style={{ color: "red" }}>{errors.price?.message}</p>
             </div>
             <div>
-              <Form.Label>Maximum number of guests</Form.Label>
+              <Form.Label>Max guests</Form.Label>
               <Form.Control
                 {...register("maxGuests")}
-                placeholder="Maximum 100"
+                placeholder="Max 100"
                 type="number"
                 id="maxGuests"
                 name="maxGuests"
@@ -198,53 +198,54 @@ export function AddVenue(props) {
               <p style={{ color: "red" }}>{errors.rating?.message}</p>
             </div>
           </Form.Group>
-
-          <Form.Group className="mb-3">
-            <Form.Label>Address</Form.Label>
-            <Form.Control
-              type="text"
-              id="address"
-              name="address"
-              onChange={onLocationInputChange}
-            />
+          <Form.Group className="mb-3 d-flex flex-wrap gap-4 input-container">
+            <div>
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type="text"
+                id="address"
+                name="address"
+                onChange={onLocationInputChange}
+              />
+            </div>
+            <div>
+              <Form.Label>City</Form.Label>
+              <Form.Control
+                type="text"
+                id="city"
+                name="city"
+                onChange={onLocationInputChange}
+              />
+            </div>
+            <div>
+              <Form.Label>Zip</Form.Label>
+              <Form.Control
+                type="text"
+                id="zip"
+                name="zip"
+                onChange={onLocationInputChange}
+              />
+            </div>
+            <div style={{ flex: "1 1 10em" }}>
+              <Form.Label>Country</Form.Label>
+              <Form.Control
+                type="text"
+                id="country"
+                name="country"
+                onChange={onLocationInputChange}
+              />
+            </div>
+            <div style={{ flex: "1 1 10em" }}>
+              <Form.Label>Continent</Form.Label>
+              <Form.Control
+                type="text"
+                id="continent"
+                name="continent"
+                onChange={onLocationInputChange}
+              />
+            </div>
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>City</Form.Label>
-            <Form.Control
-              type="text"
-              id="city"
-              name="city"
-              onChange={onLocationInputChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Zip</Form.Label>
-            <Form.Control
-              type="text"
-              id="zip"
-              name="zip"
-              onChange={onLocationInputChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Country</Form.Label>
-            <Form.Control
-              type="text"
-              id="country"
-              name="country"
-              onChange={onLocationInputChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Continent</Form.Label>
-            <Form.Control
-              type="text"
-              id="continent"
-              name="continent"
-              onChange={onLocationInputChange}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3 d-flex gap-4">
+          <Form.Group className="mb-3 d-flex flex-wrap gap-4 input-container">
             <div>
               <Form.Label>Latitude</Form.Label>
               <Form.Control

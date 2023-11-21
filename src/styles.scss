@@ -70,6 +70,9 @@ input::placeholder,
 textarea::placeholder {
   color: #acacac !important;
 }
+.input-container > * {
+  flex: 1 1 10em;
+}
 
 .dropdown-menu {
   border-radius: 0 !important;

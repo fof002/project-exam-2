@@ -155,7 +155,7 @@ export function EditVenueForm(props) {
         />
         <p style={{ color: "red" }}>{errors.description?.message}</p>
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Price of venue</Form.Label>
         <Form.Control
           {...register("price")}
@@ -168,7 +168,7 @@ export function EditVenueForm(props) {
         />
         <p style={{ color: "red" }}>{errors.price?.message}</p>
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Maximum number of guests</Form.Label>
         <Form.Control
           {...register("maxGuests")}
@@ -181,7 +181,7 @@ export function EditVenueForm(props) {
         />
         <p style={{ color: "red" }}>{errors.maxGuests?.message}</p>
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Star rating</Form.Label>
         <Form.Control
           {...register("rating")}
@@ -195,7 +195,7 @@ export function EditVenueForm(props) {
         />
         <p style={{ color: "red" }}>{errors.rating?.message}</p>
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Address</Form.Label>
         <Form.Control
           type="text"
@@ -205,7 +205,7 @@ export function EditVenueForm(props) {
           onChange={onLocationInputChange}
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>City</Form.Label>
         <Form.Control
           type="text"
@@ -215,7 +215,7 @@ export function EditVenueForm(props) {
           onChange={onLocationInputChange}
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Zip</Form.Label>
         <Form.Control
           type="text"
@@ -225,7 +225,7 @@ export function EditVenueForm(props) {
           onChange={onLocationInputChange}
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Country</Form.Label>
         <Form.Control
           type="text"
@@ -235,7 +235,7 @@ export function EditVenueForm(props) {
           onChange={onLocationInputChange}
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Continent</Form.Label>
         <Form.Control
           type="text"
@@ -245,7 +245,7 @@ export function EditVenueForm(props) {
           onChange={onLocationInputChange}
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Latitude</Form.Label>
         <Form.Control
           type="number"
@@ -255,7 +255,7 @@ export function EditVenueForm(props) {
           onChange={onLocationInputChange}
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" style={{ width: "min(40em,100%)" }}>
         <Form.Label>Longditude</Form.Label>
         <Form.Control
           type="number"
