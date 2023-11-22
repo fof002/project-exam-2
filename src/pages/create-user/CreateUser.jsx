@@ -84,8 +84,7 @@ export function CreateUser() {
           <Form.Control
             {...register("username")}
             name="username"
-            as="textarea"
-            rows={3}
+            type="text"
             onChange={onTextInputChange}
           />
           <p style={{ color: "red" }}>{errors.username?.message}</p>
