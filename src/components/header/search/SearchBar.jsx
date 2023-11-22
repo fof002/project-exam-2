@@ -110,7 +110,9 @@ export function SearchBar() {
               id="searchUrl"
               style={{ fontSize: "1.2rem" }}
             >
-              <ListGroupItem>No venues matches your search</ListGroupItem>
+              <ListGroupItem className="border-0">
+                No venues matches your search
+              </ListGroupItem>
             </ListGroup>
           )}
         </ListGroup>
