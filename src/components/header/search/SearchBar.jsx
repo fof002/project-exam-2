@@ -81,9 +81,22 @@ export function SearchBar() {
                     >
                       {venue.name} -
                     </span>
-                    <span>Max guests: {venue.maxGuests}</span>
-                    <span>Country: {venue.location.country}</span>
-                    <span>Continent: {venue.location.continent}</span>
+                    <span>
+                      Max guests:{" "}
+                      <span className="fst-italic">{venue.maxGuests}</span>
+                    </span>
+                    <span>
+                      Country:{" "}
+                      <span className="fst-italic">
+                        {venue.location.country}
+                      </span>
+                    </span>
+                    <span>
+                      Continent:{" "}
+                      <span className="fst-italic">
+                        {venue.location.continent}
+                      </span>
+                    </span>
                     <span className="fw-semibold">
                       Price: {venue.price}$ per night
                     </span>
