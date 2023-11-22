@@ -59,7 +59,7 @@ export function SearchBar() {
                   pathname: `/${venue.id}`,
                 }}
               >
-                <ListGroup.Item className="d-flex flex-wrap gap-3 align-items-center">
+                <ListGroup.Item className="border-0 d-flex flex-wrap gap-3 align-items-center">
                   <img
                     height={60}
                     width={60}
@@ -68,10 +68,15 @@ export function SearchBar() {
                     src={venue.media}
                     thumbnail
                   />
-                  <span style={{ fontSize: "1.2rem" }}>{venue.name} - </span>
+                  <span className="fw-semibold" style={{ fontSize: "1.2rem" }}>
+                    {venue.name} -
+                  </span>
                   <span>Max guests: {venue.maxGuests}</span>
                   <span>Country: {venue.location.country}</span>
                   <span>Continent: {venue.location.continent}</span>
+                  <span className="fw-semibold">
+                    Price: {venue.price}$ per night
+                  </span>
                 </ListGroup.Item>
               </Link>
             );
