@@ -50,7 +50,11 @@ export function SearchBar() {
             />
           </Col>
         </Row>
-        <ListGroup className="rounded-0 mt-3" id="searchUrl">
+        <ListGroup
+          className="rounded-0"
+          id="searchUrl"
+          style={{ marginTop: "0.65em" }}
+        >
           {filteredVenues.map((venue) => {
             return (
               <Link
@@ -59,7 +63,7 @@ export function SearchBar() {
                   pathname: `/${venue.id}`,
                 }}
               >
-                <ListGroup.Item className="border-0 d-flex flex-wrap gap-3 align-items-center">
+                <ListGroup.Item className="d-flex flex-wrap gap-3 align-items-center">
                   <img
                     height={60}
                     width={60}
