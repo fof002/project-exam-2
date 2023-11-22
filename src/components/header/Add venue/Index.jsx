@@ -271,7 +271,7 @@ export function AddVenue(props) {
           {["checkbox"].map((type) => (
             <div
               key={`default-${type}`}
-              className="mb-3 d-flex gap-3 flex-wrap"
+              className="mb-3 d-flex gap-2 flex-wrap"
             >
               <Form.Check
                 type={type}
