@@ -53,7 +53,7 @@ export function SearchBar() {
         <ListGroup
           className="rounded-0 ps-0 pe-0"
           id="searchUrl"
-          style={{ marginTop: "0.65em" }}
+          style={{ marginTop: "0.75em" }}
         >
           {filteredVenues.map((venue) => {
             return (
@@ -63,7 +63,7 @@ export function SearchBar() {
                   pathname: `/${venue.id}`,
                 }}
               >
-                <ListGroup.Item className="ms-0 d-flex flex-wrap gap-3 align-items-center">
+                <ListGroup.Item className="liste-item ms-0 border-right-0 border-left-0 d-flex flex-wrap gap-3 align-items-center">
                   <img
                     height={60}
                     width={60}
