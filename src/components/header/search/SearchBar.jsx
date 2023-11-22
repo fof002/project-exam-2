@@ -51,7 +51,7 @@ export function SearchBar() {
           </Col>
         </Row>
         <ListGroup
-          className="rounded-0 ps-0"
+          className="rounded-0 ps-0 pe-0"
           id="searchUrl"
           style={{ marginTop: "0.65em" }}
         >
