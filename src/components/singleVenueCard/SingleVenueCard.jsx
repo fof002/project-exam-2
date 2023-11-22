@@ -4,7 +4,7 @@ import Calendar from "@demark-pro/react-booking-calendar";
 
 export function SingleVenueCard(props) {
   return (
-    <Card style={{ width: "min(95vw,50em)" }} className="rounded-0">
+    <Card style={{ width: "min(95vw,50em)" }} className="border-0 rounded-0">
       <Card.Img
         className="rounded-0"
         variant="top"

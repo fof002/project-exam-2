@@ -278,7 +278,7 @@ export function EditVenueForm(props) {
         <div
           style={{ width: "min(40em,100%)" }}
           key={`default-${type}`}
-          className="d-flex gap-3 mb-3"
+          className="d-flex gap-2 mb-3"
         >
           <Form.Check
             type={type}

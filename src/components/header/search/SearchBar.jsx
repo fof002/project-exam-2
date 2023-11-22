@@ -4,6 +4,8 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState, useRef } from "react";
 import { BASE_URL } from "../../../constants";
 import { Link } from "react-router-dom";
+import { ListGroup } from "react-bootstrap";
+import icon from "../icon.png";
 
 export function SearchBar() {
   const [venues, setVenues] = useState([]);
@@ -22,30 +24,23 @@ export function SearchBar() {
     };
     getVenues();
   }, []);
-  const filteredProducts = venues.filter((venue) => {
-    document.querySelector("#searchInput").value.length === 0
-      ? (document.querySelector("#searchUrl").style.display = "none")
-      : (document.querySelector("#searchUrl").style.display = "block");
+  const filteredVenues = venues.filter((venue) => {
     return venue.name.toLowerCase().includes(query.toLowerCase());
   });
-  function showList() {
-    const listOfProducts = document.querySelector("#searchUrl");
-    listOfProducts.style.display = "block";
-  }
   return (
-    <Form>
+    <Form id="searchForm">
       <div className="bg-white p-1" id="searchContainer">
         <Row className="d-flex">
           <Col xs="auto" className="d-flex align-items-center">
-            <FontAwesomeIcon
-              icon={faMagnifyingGlass}
-              style={{ fontSize: "1.3rem" }}
-              className="ps-2"
-            />
-
+            <div id="iconContainer">
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                style={{ fontSize: "1.3rem" }}
+                className="ps-2"
+              />
+            </div>
             <Form.Control
               onChange={(e) => setQuery(e.target.value)}
-              onFocus={showList}
               ref={inputRef}
               type="text"
               id="searchInput"
@@ -55,22 +50,34 @@ export function SearchBar() {
             />
           </Col>
         </Row>
-      </div>
-      <ul id="searchUrl">
-        {filteredProducts.map((venue) => {
-          return (
-            <li>
+        <ListGroup className="rounded-0 mt-3" id="searchUrl">
+          {filteredVenues.map((venue) => {
+            return (
               <Link
+                className="list-item-search text-decoration-none"
                 to={{
                   pathname: `/${venue.id}`,
                 }}
               >
-                {venue.name}
+                <ListGroup.Item className="d-flex flex-wrap gap-3 align-items-center">
+                  <img
+                    height={60}
+                    width={60}
+                    alt="X"
+                    onerror={icon}
+                    src={venue.media}
+                    thumbnail
+                  />
+                  <span style={{ fontSize: "1.2rem" }}>{venue.name} - </span>
+                  <span>Max guests: {venue.maxGuests}</span>
+                  <span>Country: {venue.location.country}</span>
+                  <span>Continent: {venue.location.continent}</span>
+                </ListGroup.Item>
               </Link>
-            </li>
-          );
-        })}
-      </ul>
+            );
+          })}
+        </ListGroup>
+      </div>
     </Form>
   );
 }
