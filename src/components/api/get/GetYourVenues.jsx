@@ -87,6 +87,7 @@ export function GetVenues() {
           venueId={venue.id}
           rating={venue.rating}
           deleteVenue={deleteVenue}
+          bookings={venue.bookings}
         />
       ))}
     </div>

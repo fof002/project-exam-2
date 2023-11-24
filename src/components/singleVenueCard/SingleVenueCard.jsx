@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import Calendar from "@demark-pro/react-booking-calendar";
+import { SetNumberOfStars } from "../venueCard/SetNumberOfStars";
+import { BookVenue } from "./BookVenue";
 
 export function SingleVenueCard(props) {
   return (
@@ -12,20 +13,27 @@ export function SingleVenueCard(props) {
         style={{ maxHeight: "30em", width: "100%" }}
       />
       <Card.Body>
-        <Card.Title>{props.venueName}</Card.Title>
+        <h1>{props.venueName}</h1>
         <Card.Text>{props.venueDescription}</Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush fw-lighter fst-italic">
+        <ListGroup.Item>
+          <SetNumberOfStars numberOfStars={props.rating} />
+        </ListGroup.Item>
         <ListGroup.Item>Price: {props.venuePrice}$ per night</ListGroup.Item>
         <ListGroup.Item>Max guests: {props.maxGuests}</ListGroup.Item>
         <ListGroup.Item>Services: {props.services}</ListGroup.Item>
         <ListGroup.Item>
           {props.address}, {props.city}, {props.country}
         </ListGroup.Item>
+        {localStorage.getItem("user") ? (
+          <ListGroup.Item>
+            <BookVenue />
+          </ListGroup.Item>
+        ) : (
+          ""
+        )}
       </ListGroup>
-      <Card.Body className="d-flex align-items-end">
-        <Calendar />
-      </Card.Body>
     </Card>
   );
 }

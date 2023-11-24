@@ -56,16 +56,9 @@ export function ChangeAvatar(props) {
     setAvatarUrl(value);
   }
   return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
+    <Modal {...props} size="lg" aria-labelledby="changeAvatar">
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Change yout avatar
-        </Modal.Title>
+        <Modal.Title id="changeAvatar">Change yout avatar</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form style={{ width: "min(40em,100%)" }}>
@@ -85,8 +78,6 @@ export function ChangeAvatar(props) {
           Change Avatar
         </Button>
         <Button onClick={removeAvatar}>Remove avatar</Button>
-
-        <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   );

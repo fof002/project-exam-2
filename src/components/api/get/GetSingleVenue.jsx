@@ -15,7 +15,6 @@ export function GetVenue() {
       );
       const json = await response.json();
       setVenue(json);
-      console.log(json);
     }
     getData();
   }, [params.id]);
@@ -29,7 +28,7 @@ export function GetVenue() {
       <SingleVenueCard
         key={venue.id}
         venueName={venue.name}
-        venueUrl={venue.media}
+        venueUrl={venue.media[0]}
         venueDescription={venue.description}
         venuePrice={venue.price}
         address={venue.location.address}
@@ -38,6 +37,8 @@ export function GetVenue() {
         maxGuests={venue.maxGuests}
         services={getServiceMeta(venue.meta)}
         venueId={venue.id}
+        rating={venue.rating}
+        setReservedDates={venue.bookings}
       />
     </div>
   );

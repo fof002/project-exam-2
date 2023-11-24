@@ -49,10 +49,38 @@ input::placeholder {
   color: black !important;
 }
 
+.accordion-button {
+  &:focus {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+  &:hover {
+    background: lightgray !important;
+  }
+}
+.accordion-body {
+  box-shadow: none;
+}
 $theme-colors: (
   "primary": #144602,
 );
-
+[aria-disabled="true"] {
+  background-color: red;
+  color: #fff;
+}
+.react-datepicker__day--disabled:hover {
+  background-color: red !important;
+}
+.react-datepicker {
+  font-family: Arial, Helvetica, sans-serif !important;
+  border-radius: none !important;
+}
+.react-datepicker-wrapper input {
+  border: var(--bs-border-width) solid var(--bs-border-color) !important;
+  font-size: 1rem !important;
+  padding: 0.37em;
+  color: #acacac;
+}
 #searchInput:focus {
   display: block;
   outline: none;

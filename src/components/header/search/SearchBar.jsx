@@ -5,7 +5,6 @@ import { useEffect, useState, useRef } from "react";
 import { BASE_URL } from "../../../constants";
 import { Link } from "react-router-dom";
 import { ListGroup } from "react-bootstrap";
-import icon from "../icon.png";
 
 export function SearchBar() {
   const [venues, setVenues] = useState([]);
@@ -16,7 +15,6 @@ export function SearchBar() {
       try {
         const response = await fetch(BASE_URL + "venues?sort=created");
         const json = await response.json();
-        console.log(json);
         setVenues(json);
       } catch (error) {
         console.log(error);
@@ -57,11 +55,10 @@ export function SearchBar() {
         >
           {filteredVenues.length > 0 ? (
             filteredVenues.map((venue) => {
-              console.log(filteredVenues);
-
               return (
                 <Link
                   className="list-item-search text-decoration-none"
+                  key={venue.id}
                   to={{
                     pathname: `/${venue.id}`,
                   }}
@@ -71,9 +68,8 @@ export function SearchBar() {
                       height={60}
                       width={60}
                       alt="X"
-                      onerror={icon}
                       src={venue.media}
-                      thumbnail
+                      thumbnail="true"
                     />
                     <span
                       className="fw-semibold"

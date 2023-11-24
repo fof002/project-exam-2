@@ -2,6 +2,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { LinkContainer } from "react-router-bootstrap";
 import { SetNumberOfStars } from "./SetNumberOfStars";
+import { CollapseBookings } from "./CollapseBookings";
 
 export function VenueCard(props) {
   return (
@@ -21,9 +22,15 @@ export function VenueCard(props) {
         <ListGroup.Item>Price: {props.venuePrice}$ per night</ListGroup.Item>
         <ListGroup.Item>Max guests: {props.maxGuests}</ListGroup.Item>
         <ListGroup.Item>Services: {props.services}</ListGroup.Item>
-        <ListGroup.Item>
-          {props.address}, {props.city}, {props.country}
-        </ListGroup.Item>
+        <ListGroup.Item>Country: {props.country}</ListGroup.Item>
+        <ListGroup.Item>City: {props.city}</ListGroup.Item>
+        {props.owner === false ? (
+          ""
+        ) : (
+          <Card.Body>
+            <CollapseBookings bookings={props.bookings} />
+          </Card.Body>
+        )}
       </ListGroup>
       <Card.Body className="d-flex align-items-end">
         {props.owner === false ? (
