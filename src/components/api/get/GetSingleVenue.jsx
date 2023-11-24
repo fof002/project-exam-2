@@ -3,18 +3,30 @@ import { useState, useEffect } from "react";
 import { BASE_URL } from "../../../constants";
 import { useParams } from "react-router-dom";
 import { getServiceMeta } from "./ServiceMeta";
+import { LoaderGrowing } from "../../GraphicEffects/LoaderGrowing";
+import { ErrorOccured } from "../../GraphicEffects/Error";
 
 export function GetVenue() {
   const [venue, setVenue] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   let params = useParams();
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch(
-        BASE_URL + "venues/" + params.id + "?_bookings=true"
-      );
-      const json = await response.json();
-      setVenue(json);
+      try {
+        setIsLoading(true);
+        setIsError(false);
+        const response = await fetch(
+          BASE_URL + "venues/" + params.id + "?_bookings=true"
+        );
+        const json = await response.json();
+        setVenue(json);
+      } catch {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
     }
     getData();
   }, [params.id]);
@@ -22,7 +34,14 @@ export function GetVenue() {
   if (!venue) {
     return null;
   }
-
+  if (isLoading) {
+    return <LoaderGrowing />;
+  }
+  if (isError) {
+    return (
+      <ErrorOccured message="An error occured while loading your venues" />
+    );
+  }
   return (
     <div className="d-flex gap-4 flex-wrap justify-content-center">
       <SingleVenueCard

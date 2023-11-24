@@ -1,7 +1,7 @@
-import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { SetNumberOfStars } from "../venueCard/SetNumberOfStars";
-import { BookVenue } from "./BookVenue";
+import { Card } from "react-bootstrap";
+import { BookingsComponent } from "./BookingComponent";
 
 export function SingleVenueCard(props) {
   return (
@@ -26,13 +26,7 @@ export function SingleVenueCard(props) {
         <ListGroup.Item>
           {props.address}, {props.city}, {props.country}
         </ListGroup.Item>
-        {localStorage.getItem("user") ? (
-          <ListGroup.Item>
-            <BookVenue />
-          </ListGroup.Item>
-        ) : (
-          ""
-        )}
+        {localStorage.getItem("user") ? <BookingsComponent /> : ""}
       </ListGroup>
     </Card>
   );

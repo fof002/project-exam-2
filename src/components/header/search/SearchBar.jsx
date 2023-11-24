@@ -58,9 +58,12 @@ export function SearchBar() {
               return (
                 <Link
                   className="list-item-search text-decoration-none"
+                  onClick={
+                    (document.querySelector("#searchUrl").display = "none")
+                  }
                   key={venue.id}
                   to={{
-                    pathname: `/${venue.id}`,
+                    pathname: `/venue/${venue.id}`,
                   }}
                 >
                   <ListGroup.Item className="liste-item ms-0 border-bottom-0 border-right-0 border-left-0 d-flex flex-wrap gap-3 align-items-center">
@@ -80,18 +83,6 @@ export function SearchBar() {
                     <span>
                       Max guests:{" "}
                       <span className="fst-italic">{venue.maxGuests}</span>
-                    </span>
-                    <span>
-                      Country:{" "}
-                      <span className="fst-italic">
-                        {venue.location.country}
-                      </span>
-                    </span>
-                    <span>
-                      Continent:{" "}
-                      <span className="fst-italic">
-                        {venue.location.continent}
-                      </span>
                     </span>
                     <span className="fw-semibold">
                       Price: {venue.price}$ per night
