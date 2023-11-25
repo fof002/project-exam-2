@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import Modal from "react-bootstrap/Modal";
 import "react-datepicker/dist/react-datepicker.css";
+import { excludeIntervals } from "./excludeIntervals";
 
 export function BookingsComponent(props) {
   const [startDate, setStartDate] = useState(new Date());
@@ -12,12 +13,7 @@ export function BookingsComponent(props) {
   const [show, setShow] = useState(false);
   const [response, setResponse] = useState([]);
   const handleClose = () => setShow(false);
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-    console.log(request);
-  };
+
   const onChangeGuests = (e) => {
     setGuests(parseFloat(e.target.value));
     console.log(request);
@@ -30,7 +26,8 @@ export function BookingsComponent(props) {
     venueId: props.venueId,
   };
 
-  async function bookVenue() {
+  async function bookVenue(e) {
+    e.preventDefault();
     const user = JSON.parse(localStorage.getItem("user"));
     const accessToken = user.accessToken;
 
@@ -45,7 +42,11 @@ export function BookingsComponent(props) {
       });
       const json = await response.json();
       if (json.errors) {
-        alert(json.errors);
+        console.log(json.errors);
+        const errorContainer = document.querySelector("#errorContainer");
+        json.errors.forEach((error) => {
+          errorContainer += `<li>${error.message}</li>`;
+        });
       } else {
         setResponse(json);
         setShow(true);
@@ -62,43 +63,52 @@ export function BookingsComponent(props) {
     <ListGroup.Item>
       <div className="d-flex flex-column">
         <Card.Text className="fw-bold">Book venue</Card.Text>
-        <div className="d-flex gap-3 flex-wrap">
-          <div className="d-flex flex-column">
-            <Form.Label>Select dates</Form.Label>
-            <DatePicker
-              selected={startDate}
-              onChange={onChange}
-              startDate={startDate}
-              endDate={endDate}
-              excludeDateIntervals={[
-                {
-                  start: new Date("2023-11-25"),
-                  end: new Date("2023-11-27"),
-                },
-              ]}
-              selectsRange
-              selectsDisabledDaysInRange
-            />{" "}
-          </div>
-          <Form>
+        <Form onSubmit={bookVenue}>
+          <div className="d-flex gap-2 flex-wrap">
+            <Form.Group className="mb-3 d-flex flex-column">
+              <Form.Label>Check-in</Form.Label>
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                startDate={startDate}
+                selectsStart
+                endDate={endDate}
+                excludeDateIntervals={excludeIntervals(props.bookings)}
+              />
+              <Form.Label>Check-out</Form.Label>
+              <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                excludeDateIntervals={excludeIntervals(props.bookings)}
+              />
+            </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Number of guests</Form.Label>
               <Form.Control
                 onChange={onChangeGuests}
                 placeholder="Number of guests"
                 id="guests"
+                type="number"
                 name="guests"
+                min="1"
+                max={props.maxGuests}
+                required
               />
             </Form.Group>
-          </Form>
-        </div>
-        <Button
-          className="rounded-0"
-          onClick={bookVenue}
-          style={{ width: "max-content" }}
-        >
-          Book now
-        </Button>
+          </div>
+          <Button
+            className="rounded-0"
+            type="submit"
+            style={{ width: "max-content" }}
+          >
+            Book now
+          </Button>
+        </Form>
+        <ul id="errorContainer"></ul>
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -114,6 +124,9 @@ export function BookingsComponent(props) {
                 To: {new Date(response.dateTo).toLocaleDateString()}
               </ListGroup.Item>
               <ListGroup.Item>Guests: {response.guests}</ListGroup.Item>{" "}
+              <ListGroup.Item>
+                You can view your bookings under "your bookings"
+              </ListGroup.Item>
             </ListGroup>
           ) : (
             ""

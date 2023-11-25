@@ -46,7 +46,11 @@ export function SingleVenueCard(props) {
         )}
 
         {localStorage.getItem("user") ? (
-          <BookingsComponent venueId={props.venueId} />
+          <BookingsComponent
+            venueId={props.venueId}
+            maxGuests={props.maxGuests}
+            bookings={props.bookings}
+          />
         ) : (
           ""
         )}

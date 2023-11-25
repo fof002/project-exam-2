@@ -61,6 +61,7 @@ export function GetVenue() {
         lng={venue.location.lng}
         lat={venue.location.lat}
         continent={venue.location.continent}
+        bookings={venue.bookings}
       />
     </div>
   );

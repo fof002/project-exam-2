@@ -27,9 +27,9 @@ export function CollapseBookings(props) {
                     const to = new Date(booking.dateTo).toLocaleDateString();
                     return (
                       <ListGroup.Item key={booking.id}>
-                        <p>From: {from}</p>
-                        <p>To: {to}</p>
-                        <p>Guests: {booking.guests}</p>
+                        <div>From: {from}</div>
+                        <div>To: {to}</div>
+                        <div>Guests: {booking.guests}</div>
                       </ListGroup.Item>
                     );
                   })
