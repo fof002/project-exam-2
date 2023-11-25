@@ -42,10 +42,9 @@ export function BookingsComponent(props) {
       });
       const json = await response.json();
       if (json.errors) {
-        console.log(json.errors);
         const errorContainer = document.querySelector("#errorContainer");
         json.errors.forEach((error) => {
-          errorContainer += `<li>${error.message}</li>`;
+          errorContainer.innerHTML += `<li>${error.message}</li>`;
         });
       } else {
         setResponse(json);
