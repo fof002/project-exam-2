@@ -10,7 +10,7 @@ export function BookingsComponent(props) {
     <ListGroup.Item>
       <div className="d-flex flex-column">
         <Card.Text className="fw-bold">Book venue</Card.Text>
-        <div className="d-flex gap-3">
+        <div className="d-flex gap-3 flex-wrap">
           <div className="d-flex flex-column">
             <Form.Label>Select dates</Form.Label>
             <CalendarComponent setReservedDates={props.setReservedDates} />
