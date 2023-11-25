@@ -58,6 +58,9 @@ export function GetVenue() {
         venueId={venue.id}
         rating={venue.rating}
         setReservedDates={venue.bookings}
+        lng={venue.location.lng}
+        lat={venue.location.lat}
+        continent={venue.location.continent}
       />
     </div>
   );

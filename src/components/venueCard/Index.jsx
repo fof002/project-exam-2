@@ -8,7 +8,7 @@ export function VenueCard(props) {
   return (
     <Card
       style={{ width: "min(24rem,100%)" }}
-      className="text-decoration-none rounded-0 card-item"
+      className="venue p-2 text-decoration-none rounded-0 card-item"
     >
       <Card.Img className="rounded-0" variant="top" src={props.venueUrl} />
       <Card.Body>
