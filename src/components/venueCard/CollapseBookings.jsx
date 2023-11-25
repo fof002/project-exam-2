@@ -6,7 +6,7 @@ export function CollapseBookings(props) {
     <Accordion className="border" flush>
       <Accordion.Item eventKey="0">
         <Accordion.Header>
-          {props.bookings ? "View bookings" : "No bookings"}
+          {props.bookings.length > 0 ? "View bookings" : "No bookings yet"}
         </Accordion.Header>
         <Accordion.Body
           style={{
@@ -20,7 +20,13 @@ export function CollapseBookings(props) {
           <ListGroup>
             {props.bookings
               ? props.bookings.map((booking) => {
-                  <ListGroup.Item key={booking.id}>{booking}</ListGroup.Item>;
+                  return (
+                    <ListGroup.Item key={booking.id}>
+                      <p>From: {booking.dateFrom}</p>
+                      <p>To: {booking.dateTo}</p>
+                      <p>Guests: {booking.guests}</p>
+                    </ListGroup.Item>
+                  );
                 })
               : ""}
           </ListGroup>

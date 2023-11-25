@@ -19,7 +19,7 @@ export function GetVenues() {
         setIsLoading(true);
         setIsError(false);
         const response = await fetch(
-          BASE_URL + `profiles/${name}/venues?sort=created`,
+          BASE_URL + `profiles/${name}/venues?sort=created&_bookings=true`,
           {
             method: "GET",
             headers: {
@@ -30,6 +30,7 @@ export function GetVenues() {
         );
         const json = await response.json();
         setVenues(json);
+        console.log(json);
         if (json.length === 0) {
           <div
             id="main-container"
