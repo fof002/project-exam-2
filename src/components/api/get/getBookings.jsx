@@ -1,15 +1,14 @@
-import { VenueCard } from "../../venueCard/Index";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../../constants";
-import { getServiceMeta } from "./ServiceMeta";
 import { LoaderGrowing } from "../../GraphicEffects/LoaderGrowing";
 import { ErrorOccured } from "../../GraphicEffects/Error";
+import { BookingCard } from "../../bookingCard/Index";
 
-export function GetVenues() {
+export function GetBookings() {
   const user = JSON.parse(localStorage.getItem("user"));
   const accessToken = user.accessToken;
   const name = user.name;
-  const [venues, setVenues] = useState([]);
+  const [bookings, setBookings] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   useEffect(() => {
@@ -18,7 +17,8 @@ export function GetVenues() {
         setIsLoading(true);
         setIsError(false);
         const response = await fetch(
-          BASE_URL + `profiles/${name}/venues?sort=created&_bookings=true`,
+          BASE_URL +
+            `profiles/${name}/bookings?_venue=true&sort=dateFrom&sortOrder=asc`,
           {
             method: "GET",
             headers: {
@@ -28,13 +28,13 @@ export function GetVenues() {
           }
         );
         const json = await response.json();
-        setVenues(json);
+        setBookings(json);
         if (json.length === 0) {
           <div
             id="main-container"
             className="d-flex gap-4 flex-wrap justify-content-center"
           >
-            You dont have any venues yet
+            You dont have any bookings yet
           </div>;
         }
       } catch {
@@ -51,43 +51,36 @@ export function GetVenues() {
   }
   if (isError) {
     return (
-      <ErrorOccured message="An error occured while loading your venues" />
+      <ErrorOccured message="An error occured while loading your bookings" />
     );
   }
-  return venues.length === 0 ? (
+  return bookings.length === 0 ? (
     <div
       id="main-container"
       className="d-flex gap-4 flex-wrap justify-content-center"
     >
-      No venues found
+      No bookings found
     </div>
   ) : (
     <div
       id="main-container"
       className="d-flex gap-4 flex-wrap justify-content-center"
     >
-      {venues.map((venue) => (
-        <VenueCard
-          key={venue.id}
-          owner={true}
-          venueName={venue.name}
-          venueUrl={venue.media[0]}
-          venueDescription={
-            venue.description.length > 100
-              ? venue.description.substring(0, 100) + "..."
-              : venue.description
-          }
-          venuePrice={venue.price}
-          address={venue.location.address}
-          city={venue.location.city}
-          country={venue.location.country}
-          maxGuests={venue.maxGuests}
-          services={getServiceMeta(venue.meta)}
-          venueId={venue.id}
-          rating={venue.rating}
-          bookings={venue.bookings}
-        />
-      ))}
+      {bookings.map((booking) => {
+        return (
+          <BookingCard
+            key={booking.id}
+            venueUrl={booking.venue.media}
+            venueName={booking.venue.name}
+            rating={booking.venue.rating}
+            dateFrom={booking.dateFrom}
+            dateTo={booking.dateTo}
+            guests={booking.guests}
+            venueId={booking.venue.id}
+            id={booking.id}
+          />
+        );
+      })}
     </div>
   );
 }

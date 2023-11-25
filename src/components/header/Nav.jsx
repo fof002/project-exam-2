@@ -32,6 +32,7 @@ export function NavComponent() {
           <CheckIfLoggedIn />
         </div>
         <Navbar.Toggle
+          className="border-0"
           aria-controls="basic-navbar-nav"
           onClick={() => {
             icon === faMagnifyingGlass
