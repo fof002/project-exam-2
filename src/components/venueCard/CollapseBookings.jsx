@@ -8,29 +8,37 @@ export function CollapseBookings(props) {
         <Accordion.Header>
           {props.bookings.length > 0 ? "View bookings" : "No bookings yet"}
         </Accordion.Header>
-        <Accordion.Body
-          style={{
-            background: "#fff",
-            boxShadow: "0px 8px 14px 7px rgba(0, 0, 0, 0.25)",
-            width: "calc(100% - 2em)",
-            zIndex: "999",
-          }}
-          className="position-absolute border"
-        >
-          <ListGroup>
-            {props.bookings
-              ? props.bookings.map((booking) => {
-                  return (
-                    <ListGroup.Item key={booking.id}>
-                      <p>From: {booking.dateFrom}</p>
-                      <p>To: {booking.dateTo}</p>
-                      <p>Guests: {booking.guests}</p>
-                    </ListGroup.Item>
-                  );
-                })
-              : ""}
-          </ListGroup>
-        </Accordion.Body>
+        {props.bookings.length > 0 ? (
+          <Accordion.Body
+            style={{
+              background: "#fff",
+              boxShadow: "0px 8px 14px 7px rgba(0, 0, 0, 0.25)",
+              width: "calc(100% - 2em)",
+              zIndex: "999",
+            }}
+            className="position-absolute border"
+          >
+            <ListGroup>
+              {props.bookings
+                ? props.bookings.map((booking) => {
+                    const from = new Date(
+                      booking.dateFrom
+                    ).toLocaleDateString();
+                    const to = new Date(booking.dateTo).toLocaleDateString();
+                    return (
+                      <ListGroup.Item key={booking.id}>
+                        <p>From: {from}</p>
+                        <p>To: {to}</p>
+                        <p>Guests: {booking.guests}</p>
+                      </ListGroup.Item>
+                    );
+                  })
+                : ""}
+            </ListGroup>
+          </Accordion.Body>
+        ) : (
+          ""
+        )}
       </Accordion.Item>
     </Accordion>
   );

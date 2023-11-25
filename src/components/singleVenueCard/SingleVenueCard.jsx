@@ -45,7 +45,11 @@ export function SingleVenueCard(props) {
           </ListGroup.Item>
         )}
 
-        {localStorage.getItem("user") ? <BookingsComponent /> : ""}
+        {localStorage.getItem("user") ? (
+          <BookingsComponent venueId={props.venueId} />
+        ) : (
+          ""
+        )}
       </ListGroup>
     </Card>
   );

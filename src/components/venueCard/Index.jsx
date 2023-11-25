@@ -8,7 +8,7 @@ export function VenueCard(props) {
   return (
     <Card
       style={{ width: "min(24rem,100%)" }}
-      className="venue p-2 text-decoration-none rounded-0 card-item"
+      className="venue text-decoration-none rounded-0 card-item"
     >
       <Card.Img className="rounded-0" variant="top" src={props.venueUrl} />
       <Card.Body>
@@ -22,8 +22,11 @@ export function VenueCard(props) {
         <ListGroup.Item>Price: {props.venuePrice}$ per night</ListGroup.Item>
         <ListGroup.Item>Max guests: {props.maxGuests}</ListGroup.Item>
         <ListGroup.Item>Services: {props.services}</ListGroup.Item>
-        <ListGroup.Item>Country: {props.country}</ListGroup.Item>
-        <ListGroup.Item>City: {props.city}</ListGroup.Item>
+        {props.country ? (
+          <ListGroup.Item>Country: {props.country}</ListGroup.Item>
+        ) : (
+          ""
+        )}
         {props.owner === false ? (
           ""
         ) : (
