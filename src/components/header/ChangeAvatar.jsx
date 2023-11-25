@@ -58,7 +58,7 @@ export function ChangeAvatar(props) {
   return (
     <Modal {...props} size="lg" aria-labelledby="changeAvatar">
       <Modal.Header closeButton>
-        <Modal.Title id="changeAvatar">Change yout avatar</Modal.Title>
+        <Modal.Title id="changeAvatar">Change your avatar</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form style={{ width: "min(40em,100%)" }}>

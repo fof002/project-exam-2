@@ -3,8 +3,39 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { LinkContainer } from "react-router-bootstrap";
 import { SetNumberOfStars } from "./SetNumberOfStars";
 import { CollapseBookings } from "./CollapseBookings";
+import { Modal, Button } from "react-bootstrap";
+import { useState } from "react";
+import { BASE_URL } from "../../constants";
 
 export function VenueCard(props) {
+  const [show, setShow] = useState(false);
+  const [itemId, setItemId] = useState("");
+  const handleClose = () => setShow(false);
+  const handleShow = (e) => {
+    setItemId(e.target.id);
+    setShow(true);
+  };
+
+  async function deleteVenue() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const accessToken = user.accessToken;
+
+    try {
+      await fetch(BASE_URL + "venues/" + itemId, {
+        method: "DELETE",
+        headers: {
+          Authorization: `bearer ${accessToken}`,
+          "Content-type": "application/json;charset=UTF-8",
+        },
+      });
+      window.location.reload(true);
+    } catch (error) {
+      alert(
+        "Something went wrong!! Try again shortly or contact us for assitance"
+      );
+    }
+  }
+
   return (
     <Card
       style={{ width: "min(24rem,100%)" }}
@@ -22,11 +53,7 @@ export function VenueCard(props) {
         <ListGroup.Item>Price: {props.venuePrice}$ per night</ListGroup.Item>
         <ListGroup.Item>Max guests: {props.maxGuests}</ListGroup.Item>
         <ListGroup.Item>Services: {props.services}</ListGroup.Item>
-        {props.country ? (
-          <ListGroup.Item>Country: {props.country}</ListGroup.Item>
-        ) : (
-          ""
-        )}
+        <ListGroup.Item>Country: {props.country}</ListGroup.Item>
         {props.owner === false ? (
           ""
         ) : (
@@ -58,13 +85,30 @@ export function VenueCard(props) {
               </Card.Link>
             </LinkContainer>
             <Card.Link
-              onClick={props.deleteVenue}
+              onClick={handleShow}
               className="text-decoration-none"
               id={props.venueId}
               href="#"
             >
               Delete
             </Card.Link>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Delete venue</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Are you sure you want to delete venue? This action cannot be
+                undone.
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={deleteVenue} className="rounded-0">
+                  Delete
+                </Button>
+                <Button className="rounded-0" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
         )}
       </Card.Body>

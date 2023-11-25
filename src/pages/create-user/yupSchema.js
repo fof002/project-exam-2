@@ -12,9 +12,6 @@ export const schema = yup.object({
     .required("Please enter a password"),
   email: yup
     .string()
-    .matches(
-      "@stud.noroff.no",
-      "You must entar a valid @stud.noroff.no or @noroff.no email"
-    )
+    .matches("@stud.noroff.no", "You must entar a valid @stud.noroff.no")
     .required("Please enter a valid @stud.noroff.no email"),
 });

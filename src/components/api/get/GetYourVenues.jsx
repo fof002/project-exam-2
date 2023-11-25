@@ -4,7 +4,6 @@ import { BASE_URL } from "../../../constants";
 import { getServiceMeta } from "./ServiceMeta";
 import { LoaderGrowing } from "../../GraphicEffects/LoaderGrowing";
 import { ErrorOccured } from "../../GraphicEffects/Error";
-import { deleteVenue } from "../../../pages/yourVenues/deleteVenue";
 
 export function GetVenues() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -87,7 +86,6 @@ export function GetVenues() {
           services={getServiceMeta(venue.meta)}
           venueId={venue.id}
           rating={venue.rating}
-          deleteVenue={deleteVenue}
           bookings={venue.bookings}
         />
       ))}

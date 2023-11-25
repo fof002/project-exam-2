@@ -1,9 +1,6 @@
 .search-btn:hover {
   color: var(--success) !important;
 }
-body {
-  overflow-x: hidden;
-}
 footer a {
   color: #fff !important;
 }
@@ -142,7 +139,8 @@ textarea::placeholder {
 .dropdown-menu {
   border-radius: 0 !important;
   box-shadow: 0px 8px 14px 7px rgba(0, 0, 0, 0.25) !important;
-  top: 3em !important;
+  top: 2.3em !important;
+  font-size: 1.2rem !important;
 }
 .dropdown-item.active,
 .dropdown-item:active {

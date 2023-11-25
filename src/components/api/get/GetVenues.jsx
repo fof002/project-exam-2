@@ -14,7 +14,7 @@ export function GetVenues() {
       try {
         setIsLoading(true);
         setIsError(false);
-        const response = await fetch(BASE_URL + "venues?limit=12&sort=created");
+        const response = await fetch(BASE_URL + "venues?limit=20&sort=created");
         const json = await response.json();
         setVenues(json);
         if (json.errors)

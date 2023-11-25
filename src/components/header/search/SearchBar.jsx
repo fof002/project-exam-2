@@ -17,7 +17,7 @@ export function SearchBar() {
         const json = await response.json();
         setVenues(json);
       } catch (error) {
-        console.log(error);
+        alert("something went wrong! contact us for assistance");
       }
     };
     getVenues();

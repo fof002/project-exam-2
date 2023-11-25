@@ -103,7 +103,7 @@ export function CreateUser() {
           <p style={{ color: "red" }}>{errors.email?.message}</p>
 
           <Form.Text className="text-muted opacity-75">
-            Must be a valid @noroff.no or @stud.noroff.no email
+            Must be a valid @stud.noroff.no email
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="Password">

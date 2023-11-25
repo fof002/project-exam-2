@@ -10,12 +10,6 @@ export function FooterComponent() {
             <div className="nav-link px-2 text-white">Home</div>
           </Link>
         </li>
-
-        <li className="nav-item">
-          <Link className="text-decoration-none" to="/venues">
-            <div className="nav-link px-2 text-white">Venues</div>
-          </Link>
-        </li>
         <YourBookingsFooter />
       </ul>
       <p className="text-center ">© 2023 Holiday - Dream Venues</p>
