@@ -35,7 +35,6 @@ export function BookingCard(props) {
 
   return (
     <Card
-      key={props.id}
       style={{ width: "min(24rem,100%)" }}
       className="venue text-decoration-none rounded-0 card-item"
     >
@@ -75,18 +74,18 @@ export function BookingCard(props) {
         <div>
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Cancellation og booking</Modal.Title>
+              <Modal.Title>Cancellation</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              Are you sure you want to cancel this booking? The venue will send
-              a cancellation when cancellation is confirmed.
+              Are you sure you want to cancel this booking? The venue will
+              notify you when cancellation is confirmed.
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={deleteVenue} className="rounded-0">
-                Delete
+                Yes, cancel
               </Button>
               <Button className="rounded-0" onClick={handleClose}>
-                Close
+                No, Close
               </Button>
             </Modal.Footer>
           </Modal>

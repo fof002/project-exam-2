@@ -67,6 +67,7 @@ export function BookingsComponent(props) {
             <Form.Group className="mb-3 d-flex flex-column">
               <Form.Label>Check-in</Form.Label>
               <DatePicker
+                className="mb-3"
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
                 startDate={startDate}

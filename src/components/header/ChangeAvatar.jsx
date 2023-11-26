@@ -32,7 +32,10 @@ export function ChangeAvatar(props) {
       );
       const json = await response.json();
       if (json.errors) {
-        alert(json.errors);
+        const errorContainer = document.querySelector("#errorContainer");
+        json.errors.forEach((error) => {
+          errorContainer.innerHTML += `<li>${error.message}</li>`;
+        });
       } else {
         const avatarInput = document.querySelector("#avatar");
         const avatarImage = document.querySelector("#avatarImage");
@@ -70,14 +73,17 @@ export function ChangeAvatar(props) {
               name="avatar"
               onChange={onTextInputChange}
             />
+            <ul id="errorContainer"></ul>
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onFormSubmit} className="ms-2">
+        <Button onClick={onFormSubmit} className=" rounded-0 ms-2">
           Change Avatar
         </Button>
-        <Button onClick={removeAvatar}>Remove avatar</Button>
+        <Button className="rounded-0" onClick={removeAvatar}>
+          Remove avatar
+        </Button>
       </Modal.Footer>
     </Modal>
   );

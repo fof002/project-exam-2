@@ -298,13 +298,17 @@ export function AddVenue(props) {
               />
             </div>
           ))}
-          <Button type="submit">Add Venue</Button>
+          <Button className="rounded-0" type="submit">
+            Add Venue
+          </Button>
         </Form>
       </Modal.Body>
       <ul id="errorContainer" style={{ display: "none", color: "red" }}></ul>
 
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button className="rounded-0" onClick={props.onHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );
