@@ -3,6 +3,8 @@ import { SetNumberOfStars } from "../venueCard/SetNumberOfStars";
 import { useState } from "react";
 import { BASE_URL } from "../../constants";
 import { LinkContainer } from "react-router-bootstrap";
+import { addDefaultSrc } from "../api/errors/ImageError";
+import image from "./image.png";
 
 export function BookingCard(props) {
   const [show, setShow] = useState(false);
@@ -38,7 +40,12 @@ export function BookingCard(props) {
       style={{ width: "min(24rem,100%)" }}
       className="venue text-decoration-none rounded-0 card-item"
     >
-      <Card.Img className="rounded-0" variant="top" src={props.venueUrl} />
+      <Card.Img
+        className="rounded-0"
+        variant="top"
+        onError={addDefaultSrc}
+        src={props.venueUrl ? props.venueUrl : image}
+      />
       <Card.Body>
         <Card.Title>{props.venueName}</Card.Title>
       </Card.Body>
@@ -58,7 +65,7 @@ export function BookingCard(props) {
         <LinkContainer
           className="text-decoration-none"
           to={{
-            pathname: `/venue/${props.id}`,
+            pathname: `/venue/${props.venueId}`,
           }}
         >
           <Card.Link href="#">View</Card.Link>

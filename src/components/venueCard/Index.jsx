@@ -6,6 +6,8 @@ import { CollapseBookings } from "./CollapseBookings";
 import { Modal, Button } from "react-bootstrap";
 import { useState } from "react";
 import { BASE_URL } from "../../constants";
+import { addDefaultSrc } from "../api/errors/ImageError";
+import image from "./image.png";
 
 export function VenueCard(props) {
   const [show, setShow] = useState(false);
@@ -41,7 +43,12 @@ export function VenueCard(props) {
       style={{ width: "min(24rem,100%)" }}
       className="venue text-decoration-none rounded-0 card-item"
     >
-      <Card.Img className="rounded-0" variant="top" src={props.venueUrl} />
+      <Card.Img
+        className="rounded-0"
+        variant="top"
+        onError={addDefaultSrc}
+        src={props.venueUrl ? props.venueUrl : image}
+      />
       <Card.Body>
         <Card.Title>{props.venueName}</Card.Title>
         <Card.Text>{props.venueDescription}</Card.Text>

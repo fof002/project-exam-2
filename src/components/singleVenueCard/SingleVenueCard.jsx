@@ -2,6 +2,8 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { SetNumberOfStars } from "../venueCard/SetNumberOfStars";
 import { Card } from "react-bootstrap";
 import { BookingsComponent } from "./BookingComponent";
+import { addDefaultSrc } from "../api/errors/ImageError";
+import image from "./image.png";
 
 export function SingleVenueCard(props) {
   return (
@@ -12,7 +14,8 @@ export function SingleVenueCard(props) {
       <Card.Img
         className="rounded-0"
         variant="top"
-        src={props.venueUrl}
+        onError={addDefaultSrc}
+        src={props.venueUrl ? props.venueUrl : image}
         style={{ maxHeight: "30em", width: "100%" }}
       />
       <Card.Body>

@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { BASE_URL } from "../../../constants";
 import { Link } from "react-router-dom";
 import { ListGroup } from "react-bootstrap";
+import { addDefaultSrc } from "../../api/errors/ImageError";
 
 export function SearchBar() {
   const [venues, setVenues] = useState([]);
@@ -69,7 +70,8 @@ export function SearchBar() {
                   <ListGroup.Item className="liste-item ms-0 border-bottom-0 border-right-0 border-left-0 d-flex flex-wrap gap-3 align-items-center">
                     <img
                       height={60}
-                      width={60}
+                      width={70}
+                      onError={addDefaultSrc}
                       alt="X"
                       src={venue.media}
                       thumbnail="true"
