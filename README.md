@@ -1,6 +1,45 @@
-# Getting Started with Create React App
+# Project exam 2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Final Project exam for FED at Noroff. 
+
+## Description
+
+We were tasked with developing a site for an online venue site, using a css framework and a javascript framework.
+
+Marking criteria:
+
+- A Gantt chart for project timing
+- A design prototype
+- A style guide
+- A kanban project board
+- A repository link
+- A hosted application demo link
+
+## Built With
+
+HTML, Bootstrap (CSS framework), Javascript (React). Used Noroff Api for content management. 
+
+## Getting Started
+
+### Installing
+
+1. Clone the repo
+
+### Install dependencies
+
+npm install <dependencies> 
+
+## Contributing
+
+   1. Fork the repo
+   2. Create your feature branch (git checkout -b my-new-feature)
+   3. Commit your changes (git commit -am 'Add some feature')
+   4. Push to the branch (git push origin my-new-feature)
+   5. Create new Pull Request
+
+## Contact
+
+frithjof.falck@hotmail.com
 
 ## Available Scripts
 
