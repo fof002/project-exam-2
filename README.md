@@ -1,6 +1,7 @@
 # Project exam 2
 
-C:\Users\FOF002\OneDrive\Noroff studie\Frithjof\portfolio 1\portfolio-1\img\project2.png
+![Screenshot 2023-12-15 at 19-03-47 React App](https://github.com/fof002/project-exam-2/assets/80104002/0b36df81-452e-4274-9790-e23c66906f73)
+
 
 Final Project exam for FED at Noroff. 
 
