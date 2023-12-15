@@ -1,5 +1,7 @@
 # Project exam 2
 
+C:\Users\FOF002\OneDrive\Noroff studie\Frithjof\portfolio 1\portfolio-1\img\project2.png
+
 Final Project exam for FED at Noroff. 
 
 ## Description
